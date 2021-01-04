@@ -90,6 +90,12 @@
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/column.h">
 			<Option target="Server"/>
 		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.c">
 			<Option target="Server"/>
 		</Unit>
@@ -103,12 +109,6 @@
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/table.h">
-			<Option target="Server"/>
-		</Unit>
-		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/definitions.c">
-			<Option target="Server"/>
-		</Unit>
-		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/definitions.h">
 			<Option target="Server"/>
 		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/CMakeLists.txt">

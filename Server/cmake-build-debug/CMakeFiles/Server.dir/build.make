@@ -70,18 +70,18 @@ CMakeFiles/Server.dir/server.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/server.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c" -o CMakeFiles/Server.dir/server.c.s
 
-CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/definitions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c"
+CMakeFiles/Server.dir/definitions.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/definitions.c.o: ../definitions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Server.dir/definitions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/definitions.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c"
 
-CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c" > CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i
+CMakeFiles/Server.dir/definitions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/definitions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c" > CMakeFiles/Server.dir/definitions.c.i
 
-CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c" -o CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s
+CMakeFiles/Server.dir/definitions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/definitions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c" -o CMakeFiles/Server.dir/definitions.c.s
 
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.c
@@ -138,7 +138,7 @@ CMakeFiles/Server.dir/column.c.s: cmake_force
 # Object files for target Server
 Server_OBJECTS = \
 "CMakeFiles/Server.dir/server.c.o" \
-"CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o" \
+"CMakeFiles/Server.dir/definitions.c.o" \
 "CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o" \
 "CMakeFiles/Server.dir/evidence_system.c.o" \
 "CMakeFiles/Server.dir/table.c.o" \
@@ -148,7 +148,7 @@ Server_OBJECTS = \
 Server_EXTERNAL_OBJECTS =
 
 Server: CMakeFiles/Server.dir/server.c.o
-Server: CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o
+Server: CMakeFiles/Server.dir/definitions.c.o
 Server: CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o
 Server: CMakeFiles/Server.dir/evidence_system.c.o
 Server: CMakeFiles/Server.dir/table.c.o

@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o"
-  "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/column.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/column.c.o"
+  "/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/definitions.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/evidence_system.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/server.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/table.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/table.c.o"
