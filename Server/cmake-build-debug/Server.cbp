@@ -105,6 +105,21 @@
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c">
 			<Option target="Server"/>
 		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/constants.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.h">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.c">
+			<Option target="Server"/>
+		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.h">
+			<Option target="Server"/>
+		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Server/table.c">
 			<Option target="Server"/>
 		</Unit>

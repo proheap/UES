@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include "constants.h"
-#include "../../CMemLeak.h"
+//#include "../../CMemLeak.h"
 
 enum type_tag {
     INT_TYPE,

@@ -5,10 +5,9 @@
 #include <string.h>
 
 #include "state.h"
-#include "../definitions.h"
 
 #define INPUT_SIZE 10
 
-int menu();
+int menu(char* buffer);
 
 #endif //CLIENT_MENU_H

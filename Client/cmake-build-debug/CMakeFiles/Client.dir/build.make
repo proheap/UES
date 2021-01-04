@@ -70,18 +70,18 @@ CMakeFiles/Client.dir/client.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Client.dir/client.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Client/client.c" -o CMakeFiles/Client.dir/client.c.s
 
-CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/definitions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c"
+CMakeFiles/Client.dir/definitions.c.o: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/definitions.c.o: ../definitions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Client.dir/definitions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Client.dir/definitions.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c"
 
-CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c" > CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i
+CMakeFiles/Client.dir/definitions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Client.dir/definitions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c" > CMakeFiles/Client.dir/definitions.c.i
 
-CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c" -o CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s
+CMakeFiles/Client.dir/definitions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Client.dir/definitions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c" -o CMakeFiles/Client.dir/definitions.c.s
 
 CMakeFiles/Client.dir/menu.c.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/menu.c.o: ../menu.c
@@ -112,7 +112,7 @@ CMakeFiles/Client.dir/state.c.s: cmake_force
 # Object files for target Client
 Client_OBJECTS = \
 "CMakeFiles/Client.dir/client.c.o" \
-"CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o" \
+"CMakeFiles/Client.dir/definitions.c.o" \
 "CMakeFiles/Client.dir/menu.c.o" \
 "CMakeFiles/Client.dir/state.c.o"
 
@@ -120,7 +120,7 @@ Client_OBJECTS = \
 Client_EXTERNAL_OBJECTS =
 
 Client: CMakeFiles/Client.dir/client.c.o
-Client: CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o
+Client: CMakeFiles/Client.dir/definitions.c.o
 Client: CMakeFiles/Client.dir/menu.c.o
 Client: CMakeFiles/Client.dir/state.c.o
 Client: CMakeFiles/Client.dir/build.make

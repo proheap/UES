@@ -123,33 +123,6 @@ Client/fast:
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
 .PHONY : Client/fast
 
-c/Users/Martin/Documents/CLion_Projects/UES/definitions.o: c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o
-
-.PHONY : c/Users/Martin/Documents/CLion_Projects/UES/definitions.o
-
-# target to build an object file
-c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o
-.PHONY : c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o
-
-c/Users/Martin/Documents/CLion_Projects/UES/definitions.i: c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i
-
-.PHONY : c/Users/Martin/Documents/CLion_Projects/UES/definitions.i
-
-# target to preprocess a source file
-c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i
-.PHONY : c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.i
-
-c/Users/Martin/Documents/CLion_Projects/UES/definitions.s: c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s
-
-.PHONY : c/Users/Martin/Documents/CLion_Projects/UES/definitions.s
-
-# target to generate assembly for a file
-c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s
-.PHONY : c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.s
-
 client.o: client.c.o
 
 .PHONY : client.o
@@ -176,6 +149,33 @@ client.s: client.c.s
 client.c.s:
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client.c.s
 .PHONY : client.c.s
+
+definitions.o: definitions.c.o
+
+.PHONY : definitions.o
+
+# target to build an object file
+definitions.c.o:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/definitions.c.o
+.PHONY : definitions.c.o
+
+definitions.i: definitions.c.i
+
+.PHONY : definitions.i
+
+# target to preprocess a source file
+definitions.c.i:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/definitions.c.i
+.PHONY : definitions.c.i
+
+definitions.s: definitions.c.s
+
+.PHONY : definitions.s
+
+# target to generate assembly for a file
+definitions.c.s:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/definitions.c.s
+.PHONY : definitions.c.s
 
 menu.o: menu.c.o
 
@@ -240,12 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Client"
 	@echo "... edit_cache"
-	@echo "... c/Users/Martin/Documents/CLion_Projects/UES/definitions.o"
-	@echo "... c/Users/Martin/Documents/CLion_Projects/UES/definitions.i"
-	@echo "... c/Users/Martin/Documents/CLion_Projects/UES/definitions.s"
 	@echo "... client.o"
 	@echo "... client.i"
 	@echo "... client.s"
+	@echo "... definitions.o"
+	@echo "... definitions.i"
+	@echo "... definitions.s"
 	@echo "... menu.o"
 	@echo "... menu.i"
 	@echo "... menu.s"

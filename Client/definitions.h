@@ -3,6 +3,8 @@
 
 #include <pthread.h>
 
+#include "menu.h"
+
 #ifdef	__cplusplus
 extern "C" {
 #endif

@@ -81,6 +81,12 @@
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/client.c">
 			<Option target="Client"/>
 		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.h">
+			<Option target="Client"/>
+		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/menu.c">
 			<Option target="Client"/>
 		</Unit>
@@ -91,12 +97,6 @@
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/state.h">
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/definitions.c">
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/definitions.h">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/CMakeLists.txt">

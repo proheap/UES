@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/c/Users/Martin/Documents/CLion Projects/UES/definitions.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Client/client.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/client.c.o"
+  "/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/definitions.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Client/menu.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/menu.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Client/state.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/state.c.o"
   )

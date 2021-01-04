@@ -60,7 +60,9 @@ int main(int argc, char* argv[]) {
     pthread_create(&thread, NULL, data_writeData, (void *)&data);
 
 	//v hlavnom vlakne sa bude vykonavat citanie dat zo socketu
-	data_readData((void *)&data);
+	EVIDENCE_SYSTEM es;
+	esInit(&es);
+	data_readData((void *)&data, &es);
 
 	//pockame na skoncenie zapisovacieho vlakna <pthread.h>
 	pthread_join(thread, NULL);

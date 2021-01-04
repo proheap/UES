@@ -10,7 +10,6 @@
 #include <pthread.h>
 
 #include "../CMemLeak.h"
-#include "menu.h"
 
 int main(int argc, char *argv[]) {
     if (argc < 4) {
@@ -56,8 +55,7 @@ int main(int argc, char *argv[]) {
     pthread_create(&thread, NULL, data_readData, (void *)&data);
 
 	//v hlavnom vlakne sa bude vykonavat citanie dat zo socketu
-	//data_writeData((void *)&data);
-	menu();
+	data_writeData((void *)&data);
 
     //pockame na skoncenie zapisovacieho vlakna <pthread.h>
 	pthread_join(thread, NULL);

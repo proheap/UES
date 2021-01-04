@@ -3,6 +3,8 @@
 
 #include <pthread.h>
 
+#include "evidence_system.h"
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
@@ -22,7 +24,7 @@ void data_init(DATA *data, const char* userName, const int socket);
 void data_destroy(DATA *data);
 void data_stop(DATA *data);
 int data_isStopped(DATA *data);
-void *data_readData(void *data);
+void *data_readData(void *data, EVIDENCE_SYSTEM* es);
 void *data_writeData(void *data);
 
 void printError(char *str);

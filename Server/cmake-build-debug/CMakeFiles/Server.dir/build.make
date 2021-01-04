@@ -83,9 +83,35 @@ CMakeFiles/Server.dir/definitions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/definitions.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c" -o CMakeFiles/Server.dir/definitions.c.s
 
+CMakeFiles/Server.dir/structures/linked_list.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/structures/linked_list.c.o: ../structures/linked_list.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Server.dir/structures/linked_list.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/structures/linked_list.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.c"
+
+CMakeFiles/Server.dir/structures/linked_list.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/structures/linked_list.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.c" > CMakeFiles/Server.dir/structures/linked_list.c.i
+
+CMakeFiles/Server.dir/structures/linked_list.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/structures/linked_list.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.c" -o CMakeFiles/Server.dir/structures/linked_list.c.s
+
+CMakeFiles/Server.dir/structures/item.c.o: CMakeFiles/Server.dir/flags.make
+CMakeFiles/Server.dir/structures/item.c.o: ../structures/item.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Server.dir/structures/item.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/structures/item.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.c"
+
+CMakeFiles/Server.dir/structures/item.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Server.dir/structures/item.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.c" > CMakeFiles/Server.dir/structures/item.c.i
+
+CMakeFiles/Server.dir/structures/item.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Server.dir/structures/item.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.c" -o CMakeFiles/Server.dir/structures/item.c.s
+
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.c"
 
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.i: cmake_force
@@ -98,7 +124,7 @@ CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.s: 
 
 CMakeFiles/Server.dir/evidence_system.c.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/evidence_system.c.o: ../evidence_system.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Server.dir/evidence_system.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Server.dir/evidence_system.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/evidence_system.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.c"
 
 CMakeFiles/Server.dir/evidence_system.c.i: cmake_force
@@ -111,7 +137,7 @@ CMakeFiles/Server.dir/evidence_system.c.s: cmake_force
 
 CMakeFiles/Server.dir/table.c.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/table.c.o: ../table.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Server.dir/table.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Server.dir/table.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/table.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Server/table.c"
 
 CMakeFiles/Server.dir/table.c.i: cmake_force
@@ -124,7 +150,7 @@ CMakeFiles/Server.dir/table.c.s: cmake_force
 
 CMakeFiles/Server.dir/column.c.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/column.c.o: ../column.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Server.dir/column.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Server.dir/column.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Server.dir/column.c.o   -c "/c/Users/Martin/Documents/CLion Projects/UES/Server/column.c"
 
 CMakeFiles/Server.dir/column.c.i: cmake_force
@@ -139,6 +165,8 @@ CMakeFiles/Server.dir/column.c.s: cmake_force
 Server_OBJECTS = \
 "CMakeFiles/Server.dir/server.c.o" \
 "CMakeFiles/Server.dir/definitions.c.o" \
+"CMakeFiles/Server.dir/structures/linked_list.c.o" \
+"CMakeFiles/Server.dir/structures/item.c.o" \
 "CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o" \
 "CMakeFiles/Server.dir/evidence_system.c.o" \
 "CMakeFiles/Server.dir/table.c.o" \
@@ -149,13 +177,15 @@ Server_EXTERNAL_OBJECTS =
 
 Server: CMakeFiles/Server.dir/server.c.o
 Server: CMakeFiles/Server.dir/definitions.c.o
+Server: CMakeFiles/Server.dir/structures/linked_list.c.o
+Server: CMakeFiles/Server.dir/structures/item.c.o
 Server: CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o
 Server: CMakeFiles/Server.dir/evidence_system.c.o
 Server: CMakeFiles/Server.dir/table.c.o
 Server: CMakeFiles/Server.dir/column.c.o
 Server: CMakeFiles/Server.dir/build.make
 Server: CMakeFiles/Server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable Server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable Server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

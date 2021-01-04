@@ -6,30 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Client/client.c
-../definitions.h
-/c/Users/Martin/Documents/CLion Projects/UES/definitions.h
-stdlib.h
--
-string.h
--
-sys/socket.h
--
-arpa/inet.h
--
-netdb.h
--
-unistd.h
--
-pthread.h
--
-../CMemLeak.h
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
-menu.h
-/c/Users/Martin/Documents/CLion Projects/UES/Client/menu.h
-
 /c/Users/Martin/Documents/CLion Projects/UES/Client/menu.c
 stdlib.h
 -
@@ -46,9 +22,5 @@ state.h
 
 /c/Users/Martin/Documents/CLion Projects/UES/Client/state.h
 stdio.h
--
-
-/c/Users/Martin/Documents/CLion Projects/UES/definitions.h
-pthread.h
 -
 

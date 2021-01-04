@@ -6,9 +6,39 @@
 
 #IncludeRegexTransform: 
 
-/c/Users/Martin/Documents/CLion Projects/UES/definitions.c
+/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/constants.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/item.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+constants.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/constants.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/linked_list.h
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+item.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/item.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/column.h
+./structures/linked_list.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/linked_list.h
+../CMemLeak.h
+/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c
 definitions.h
-/c/Users/Martin/Documents/CLion Projects/UES/definitions.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
 stdio.h
 -
 stdlib.h
@@ -22,7 +52,45 @@ unistd.h
 fcntl.h
 -
 
-/c/Users/Martin/Documents/CLion Projects/UES/definitions.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
 pthread.h
 -
+evidence_system.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.c
+evidence_system.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.h
+table.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
+./structures/linked_list.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/linked_list.h
+../CMemLeak.h
+/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c
+definitions.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
+stdlib.h
+-
+string.h
+-
+sys/socket.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+pthread.h
+-
+../CMemLeak.h
+/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
+column.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/column.h
+../CMemLeak.h
+/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
 

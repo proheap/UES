@@ -4,34 +4,56 @@
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.c
 CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/CMemLeak.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.h
 
-CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/definitions.c
-CMakeFiles/Server.dir/c/Users/Martin/Documents/CLion_Projects/UES/definitions.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/definitions.h
-
 CMakeFiles/Server.dir/column.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.h
+CMakeFiles/Server.dir/column.c.o: .././structures/constants.h
+CMakeFiles/Server.dir/column.c.o: .././structures/item.h
+CMakeFiles/Server.dir/column.c.o: .././structures/linked_list.h
 CMakeFiles/Server.dir/column.c.o: ../column.c
 CMakeFiles/Server.dir/column.c.o: ../column.h
-CMakeFiles/Server.dir/column.c.o: ../structures/constants.h
-CMakeFiles/Server.dir/column.c.o: ../structures/item.h
-CMakeFiles/Server.dir/column.c.o: ../structures/linked_list.h
+
+CMakeFiles/Server.dir/definitions.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.h
+CMakeFiles/Server.dir/definitions.c.o: .././structures/constants.h
+CMakeFiles/Server.dir/definitions.c.o: .././structures/item.h
+CMakeFiles/Server.dir/definitions.c.o: .././structures/linked_list.h
+CMakeFiles/Server.dir/definitions.c.o: ../column.h
+CMakeFiles/Server.dir/definitions.c.o: ../definitions.c
+CMakeFiles/Server.dir/definitions.c.o: ../definitions.h
+CMakeFiles/Server.dir/definitions.c.o: ../evidence_system.h
+CMakeFiles/Server.dir/definitions.c.o: ../table.h
 
 CMakeFiles/Server.dir/evidence_system.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.h
+CMakeFiles/Server.dir/evidence_system.c.o: .././structures/constants.h
+CMakeFiles/Server.dir/evidence_system.c.o: .././structures/item.h
+CMakeFiles/Server.dir/evidence_system.c.o: .././structures/linked_list.h
 CMakeFiles/Server.dir/evidence_system.c.o: ../column.h
 CMakeFiles/Server.dir/evidence_system.c.o: ../evidence_system.c
 CMakeFiles/Server.dir/evidence_system.c.o: ../evidence_system.h
-CMakeFiles/Server.dir/evidence_system.c.o: ../structures/constants.h
-CMakeFiles/Server.dir/evidence_system.c.o: ../structures/item.h
-CMakeFiles/Server.dir/evidence_system.c.o: ../structures/linked_list.h
 CMakeFiles/Server.dir/evidence_system.c.o: ../table.h
 
 CMakeFiles/Server.dir/server.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.h
+CMakeFiles/Server.dir/server.c.o: .././structures/constants.h
+CMakeFiles/Server.dir/server.c.o: .././structures/item.h
+CMakeFiles/Server.dir/server.c.o: .././structures/linked_list.h
+CMakeFiles/Server.dir/server.c.o: ../column.h
+CMakeFiles/Server.dir/server.c.o: ../definitions.h
+CMakeFiles/Server.dir/server.c.o: ../evidence_system.h
 CMakeFiles/Server.dir/server.c.o: ../server.c
-CMakeFiles/Server.dir/server.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/definitions.h
+CMakeFiles/Server.dir/server.c.o: ../table.h
+
+CMakeFiles/Server.dir/structures/item.c.o: ../structures/constants.h
+CMakeFiles/Server.dir/structures/item.c.o: ../structures/item.c
+CMakeFiles/Server.dir/structures/item.c.o: ../structures/item.h
+
+CMakeFiles/Server.dir/structures/linked_list.c.o: ../structures/constants.h
+CMakeFiles/Server.dir/structures/linked_list.c.o: ../structures/item.h
+CMakeFiles/Server.dir/structures/linked_list.c.o: ../structures/linked_list.c
+CMakeFiles/Server.dir/structures/linked_list.c.o: ../structures/linked_list.h
 
 CMakeFiles/Server.dir/table.c.o: /c/Users/Martin/Documents/CLion\ Projects/UES/CMemLeak.h
+CMakeFiles/Server.dir/table.c.o: .././structures/constants.h
+CMakeFiles/Server.dir/table.c.o: .././structures/item.h
+CMakeFiles/Server.dir/table.c.o: .././structures/linked_list.h
 CMakeFiles/Server.dir/table.c.o: ../column.h
-CMakeFiles/Server.dir/table.c.o: ../structures/constants.h
-CMakeFiles/Server.dir/table.c.o: ../structures/item.h
-CMakeFiles/Server.dir/table.c.o: ../structures/linked_list.h
 CMakeFiles/Server.dir/table.c.o: ../table.c
 CMakeFiles/Server.dir/table.c.o: ../table.h
 

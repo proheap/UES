@@ -258,6 +258,60 @@ server.c.s:
 	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server.c.s
 .PHONY : server.c.s
 
+structures/item.o: structures/item.c.o
+
+.PHONY : structures/item.o
+
+# target to build an object file
+structures/item.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/structures/item.c.o
+.PHONY : structures/item.c.o
+
+structures/item.i: structures/item.c.i
+
+.PHONY : structures/item.i
+
+# target to preprocess a source file
+structures/item.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/structures/item.c.i
+.PHONY : structures/item.c.i
+
+structures/item.s: structures/item.c.s
+
+.PHONY : structures/item.s
+
+# target to generate assembly for a file
+structures/item.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/structures/item.c.s
+.PHONY : structures/item.c.s
+
+structures/linked_list.o: structures/linked_list.c.o
+
+.PHONY : structures/linked_list.o
+
+# target to build an object file
+structures/linked_list.c.o:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/structures/linked_list.c.o
+.PHONY : structures/linked_list.c.o
+
+structures/linked_list.i: structures/linked_list.c.i
+
+.PHONY : structures/linked_list.i
+
+# target to preprocess a source file
+structures/linked_list.c.i:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/structures/linked_list.c.i
+.PHONY : structures/linked_list.c.i
+
+structures/linked_list.s: structures/linked_list.c.s
+
+.PHONY : structures/linked_list.s
+
+# target to generate assembly for a file
+structures/linked_list.c.s:
+	$(MAKE) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/structures/linked_list.c.s
+.PHONY : structures/linked_list.c.s
+
 table.o: table.c.o
 
 .PHONY : table.o
@@ -309,6 +363,12 @@ help:
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"
+	@echo "... structures/item.o"
+	@echo "... structures/item.i"
+	@echo "... structures/item.s"
+	@echo "... structures/linked_list.o"
+	@echo "... structures/linked_list.i"
+	@echo "... structures/linked_list.s"
 	@echo "... table.o"
 	@echo "... table.i"
 	@echo "... table.s"

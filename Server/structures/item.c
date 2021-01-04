@@ -16,7 +16,7 @@ void itemAddData(ITEM *item, void *data) {
             dataSize = sizeof(_Bool);
             break;
         case STRUCT_TYPE:
-            dataSize = sizeof(struct*);
+            dataSize = sizeof(void *);
             break;
     }
     item->data = calloc(1 , dataSize);
@@ -41,7 +41,7 @@ void itemCopy(const ITEM *src, ITEM *dest, const enum type_tag type) {
             dataSize = sizeof(_Bool);
             break;
         case STRUCT_TYPE:
-            dataSize = sizeof(struct*);
+            dataSize = sizeof(void *);
             break;
     }
     dest->data = calloc(1 , dataSize);
@@ -66,7 +66,7 @@ void itemSetData(ITEM* item, const void *data, const enum type_tag type) {
             dataSize = sizeof(_Bool);
             break;
         case STRUCT_TYPE:
-            dataSize = sizeof(struct*);
+            dataSize = sizeof(void *);
             break;
     }
     item->data = realloc(item->data, dataSize);
@@ -90,7 +90,7 @@ void* itemGetData(const ITEM *item, void *data) {
             dataSize = sizeof(_Bool);
             break;
         case STRUCT_TYPE:
-            dataSize = sizeof(struct*);
+            dataSize = sizeof(void *);
             break;
     }
     data = calloc(1 , dataSize);

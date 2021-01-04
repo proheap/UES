@@ -2,6 +2,7 @@
 #define SERVER_EVIDENCE_SYSTEM_H
 
 #include "table.h"
+#include "./structures/linked_list.h"
 #include "../CMemLeak.h"
 
 typedef struct evidence_system {
@@ -9,8 +10,9 @@ typedef struct evidence_system {
     int countTables;
 } EVIDENCE_SYSTEM;
 
-bool addTable(EVIDENCE_SYSTEM* es, int countColumns);
-bool removeTable(EVIDENCE_SYSTEM* es, int indexTable);
+void esInit(EVIDENCE_SYSTEM* es);
+bool esAddTable(EVIDENCE_SYSTEM* es, int countColumns, char* buffer);
+bool esRemoveTable(EVIDENCE_SYSTEM* es, int indexTable);
 bool esAddEntry(EVIDENCE_SYSTEM* es, int indexTable);
 bool esRemoveEntry(EVIDENCE_SYSTEM* es, int indexTable);
 void esPrintTable(EVIDENCE_SYSTEM* es, int indexTable);

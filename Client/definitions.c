@@ -62,40 +62,19 @@ void *data_readData(void *data) {
 	return NULL;
 }
 
-void *data_writeData(void *data) {    
+void *data_writeData(void *data) {
     DATA *pdata = (DATA *)data;
     char buffer[BUFFER_LENGTH + 1];
-	buffer[BUFFER_LENGTH] = '\0';
-	int userNameLength = strlen(pdata->userName);
+    buffer[0] = '\0';
+    int userNameLength = strlen(pdata->userName);
 
-	//pre pripad, ze chceme poslat viac dat, ako je kapacita buffra
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(STDIN_FILENO, F_GETFL, 0) | O_NONBLOCK);
-	fd_set inputs;
-    FD_ZERO(&inputs);
-	struct timeval tv;
-	tv.tv_usec = 0;
+    //pre pripad, ze chceme poslat viac dat, ako je kapacita buffra
     while(!data_isStopped(pdata)) {
-		tv.tv_sec = 1;
-		FD_SET(STDIN_FILENO, &inputs);
-		select(STDIN_FILENO + 1, &inputs, NULL, NULL, &tv);
-		if (FD_ISSET(STDIN_FILENO, &inputs)) {
-			sprintf(buffer, "%s: ", pdata->userName);
-			char *textStart = buffer + (userNameLength + 2);
-			while (fgets(textStart, BUFFER_LENGTH - (userNameLength + 2), stdin) > 0) {
-				char *pos = strchr(textStart, '\n');
-				if (pos != NULL) {
-					*pos = '\0';
-				}
-				write(pdata->socket, buffer, strlen(buffer) + 1);
-				
-				if (strstr(textStart, endMsg) == textStart && strlen(textStart) == strlen(endMsg)) {
-					printf("Koniec komunikacie.\n");
-					data_stop(pdata);
-				}
-			}
+        while (menu(buffer) == 1) {
+            write(pdata->socket, buffer, strlen(buffer) + 1);
         }
+        data_stop(pdata);
     }
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(STDIN_FILENO, F_GETFL, 0) & ~O_NONBLOCK);
 	
 	return NULL;
 }

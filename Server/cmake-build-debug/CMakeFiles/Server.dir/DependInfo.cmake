@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/definitions.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/evidence_system.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/server.c.o"
+  "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/structures/item.c.o"
+  "/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/structures/linked_list.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Server/table.c" "/c/Users/Martin/Documents/CLion Projects/UES/Server/cmake-build-debug/CMakeFiles/Server.dir/table.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

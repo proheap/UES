@@ -36,23 +36,22 @@ int data_isStopped(DATA *data) {
     return stop;
 }
 
-void *data_readData(void *data) {    
+static void data_answer(char* buffer, EVIDENCE_SYSTEM* es) {
+    switch (*buffer) {
+        case '1':
+            esAddTable(es, *(buffer + 1) - '0', buffer);
+    }
+}
+
+void *data_readData(void *data, EVIDENCE_SYSTEM* es) {
     DATA *pdata = (DATA *)data;
     char buffer[BUFFER_LENGTH + 1];
 	buffer[BUFFER_LENGTH] = '\0';
     while(!data_isStopped(pdata)) {
 		bzero(buffer, BUFFER_LENGTH);
 		if (read(pdata->socket, buffer, BUFFER_LENGTH) > 0) {
-			char *posSemi = strchr(buffer, ':');
-			char *pos = strstr(posSemi + 1, endMsg);
-			if (pos != NULL && pos - posSemi == 2 && *(pos + strlen(endMsg)) == '\0') {
-				*(pos - 2) = '\0';
-				printf("Pouzivatel %s ukoncil komunikaciu.\n", buffer);
-				data_stop(pdata);
-			}
-			else {
 				printf("%s\n", buffer);
-			}			
+				data_answer(buffer, es);
 		}
 		else {
 			data_stop(pdata);

@@ -15,16 +15,31 @@ static void printMenu() {
     printf("0. Exit\n");
 }
 
-static void menuCreateTable() {
+static void menuColumnType(char* buffer, int countColumns) {
+    printf("");
+    for (int i = 0; i < countColumns; i++) {
+        int type;
+        printf("Zadajte typ pre %d. stlpec (0 - INT, 1 - DOUBLE, 2 - STRING, 3 - BOOLEAN):\n", i + 1);
+        do {
+            scanf("%d", &type);
+            getchar();
+        } while (type < 0 && type > 3);
+        *(buffer + 2 + i) = type + '0';
+    }
+}
+
+static void menuCreateTable(char* buffer) {
+    *buffer = '1';
     printf("VYTVORENIE TABULKY\n");
     printf("------------------\n");
     int countColumns;
     printf("Zadajte pocet stlpcov:\n");
     scanf("%d", &countColumns);
+    getchar();
+    *(buffer + 1) = countColumns + '0';
 
-    for (int i = 0; i < countColumns; i++) {
-
-    }
+    menuColumnType(buffer, countColumns);
+    *(buffer + countColumns + 2) = '\0';
 }
 
 static void menuRemoveTable() {
@@ -69,57 +84,59 @@ static void menuPrintTableString() {
 
 }
 
-int menu() {
+int menu(char* buffer) {
     char input[INPUT_SIZE];
-    STATE_MENU state = START;
+    STATE_MENU state;
 
-    int balance = 0;
-    while(fgets(input, sizeof(input), stdin)) {
-        switch (state) {
-            case START:
-                printMenu();
-                if (strncmp(input, "1\n", INPUT_SIZE) == 0) {
-                    state = CREATE_TABLE;
-                } else if (strncmp(input, "2\n", INPUT_SIZE) == 0) {
-                    state = REMOVE_TABLE;
-                } else if (strncmp(input, "3\n", INPUT_SIZE) == 0) {
-                    state = ADD_ENTRY;
-                } else if (strncmp(input, "4\n", INPUT_SIZE) == 0) {
-                    state = REMOVE_ENTRY;
-                } else if (strncmp(input, "5\n", INPUT_SIZE) == 0) {
-                    state = PRINT_TABLE;
-                } else if (strncmp(input, "6\n", INPUT_SIZE) == 0) {
-                    state = PRINT_TABLE_STRING;
-                } else if (strncmp(input, "7\n", INPUT_SIZE) == 0) {
-                    state = SORT_TABLE;
-                } else if (strncmp(input, "0\n", INPUT_SIZE) == 0) {
-                    return EXIT_SUCCESS;
-                }
-                break;
-            case CREATE_TABLE:
-                menuCreateTable();
-                state = START;
-                break;
-            case REMOVE_TABLE:
-                menuRemoveTable();
-                state = START;
-                break;
-            case ADD_ENTRY:
-                menuAddEntry();
-                state = START;
-                break;
-            case REMOVE_ENTRY:
-                menuRemoveEntry();
-                state = START;
-                break;
-            case PRINT_TABLE:
-                menuPrintTable();
-                state = START;
-                break;
-            case PRINT_TABLE_STRING:
-                menuPrintTable();
-                state = START;
-                break;
-        }
+    printMenu();
+    fgets(input, sizeof(input), stdin);
+    char *pos = strchr(input, '\n');
+    if (pos != NULL) {
+        *pos = '\0';
     }
+
+    if (strncmp(input, "1", INPUT_SIZE) == 0) {
+        state = CREATE_TABLE;
+    } else if (strncmp(input, "2", INPUT_SIZE) == 0) {
+        state = REMOVE_TABLE;
+    } else if (strncmp(input, "3", INPUT_SIZE) == 0) {
+        state = ADD_ENTRY;
+    } else if (strncmp(input, "4", INPUT_SIZE) == 0) {
+        state = REMOVE_ENTRY;
+    } else if (strncmp(input, "5", INPUT_SIZE) == 0) {
+        state = PRINT_TABLE;
+    } else if (strncmp(input, "6", INPUT_SIZE) == 0) {
+        state = PRINT_TABLE_STRING;
+    } else if (strncmp(input, "7", INPUT_SIZE) == 0) {
+        state = SORT_TABLE;
+    } else if (strncmp(input, "0", INPUT_SIZE) == 0) {
+        return 0;
+    }
+    switch (state) {
+        case CREATE_TABLE:
+            menuCreateTable(buffer);
+            state = START;
+            break;
+        case REMOVE_TABLE:
+            menuRemoveTable();
+            state = START;
+            break;
+        case ADD_ENTRY:
+            menuAddEntry();
+            state = START;
+            break;
+        case REMOVE_ENTRY:
+            menuRemoveEntry();
+            state = START;
+            break;
+        case PRINT_TABLE:
+            menuPrintTable();
+            state = START;
+            break;
+        case PRINT_TABLE_STRING:
+            menuPrintTable();
+            state = START;
+            break;
+    }
+    return 1;
 }

@@ -11,5 +11,6 @@ typedef struct table {
 } TABLE;
 
 void tableInit(TABLE* table, int countColumns);
+void tableAddColumns(TABLE* table, char* buffer);
 
 #endif //SERVER_TABLE_H
