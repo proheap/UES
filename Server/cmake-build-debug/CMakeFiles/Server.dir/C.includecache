@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/c/Users/Martin/Documents/CLion Projects/UES/definitions.c
+definitions.h
+/c/Users/Martin/Documents/CLion Projects/UES/definitions.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+errno.h
+-
+unistd.h
+-
+fcntl.h
+-
+
+/c/Users/Martin/Documents/CLion Projects/UES/definitions.h
+pthread.h
+-
+
