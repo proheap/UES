@@ -42,20 +42,22 @@ static void menuCreateTable(char* buffer) {
     *(buffer + countColumns + 2) = '\0';
 }
 
-static void menuRemoveTable() {
+static void menuRemoveTable(char* buffer) {
     printf("ODSTRANENIE TABULKY\n");
     printf("-------------------\n");
-
-    printf("Zadajte, ktoru tabulku chcete odstranit.\n");
-
+    printf("Naozaj chcete odstranit tabulku? (0 - NIE, 1 - ANO\n");
+    int input;
+    scanf("%d", &input);
+    getchar();
+    if (input == 1) {
+        *buffer = '2';
+        *(buffer + 1) = '\0';
+    }
 }
 
 static void menuAddEntry() {
     printf("PRIDANIE ZAZNAMU DO TABULKY\n");
     printf("---------------------------\n");
-
-    printf("Zadajte, do ktorej tabulky chcete pridat zaznam.\n");
-
 }
 
 static void menuRemoveEntry() {

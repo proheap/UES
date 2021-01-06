@@ -2,7 +2,7 @@
 
 void tableInit(TABLE* table, int countColumns) {
     table->countColumns = countColumns;
-    table->columns = calloc(countColumns, sizeof(COLUMN*));
+    table->columns = (COLUMN**) malloc(countColumns * sizeof(COLUMN*));
     table->countEntries = 0;
 }
 
@@ -11,5 +11,6 @@ void tableAddColumns(TABLE* table, char* buffer) {
         COLUMN* column;
         column = (COLUMN*) malloc(sizeof(COLUMN));
         columnInit(column, *(buffer + 2 + i) - '0');
+        table->columns[i] = column;
     }
 }

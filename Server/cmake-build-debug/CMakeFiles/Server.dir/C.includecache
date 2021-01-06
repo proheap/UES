@@ -36,57 +36,9 @@ item.h
 ../CMemLeak.h
 /c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
 
-/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.c
-definitions.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
-stdio.h
--
-stdlib.h
--
-string.h
--
-errno.h
--
-unistd.h
--
-fcntl.h
--
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
-pthread.h
--
-evidence_system.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.c
-evidence_system.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/evidence_system.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/table.c
 table.h
 /c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
-./structures/linked_list.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/linked_list.h
-../CMemLeak.h
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c
-definitions.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
-stdlib.h
--
-string.h
--
-sys/socket.h
--
-arpa/inet.h
--
-unistd.h
--
-pthread.h
--
-../CMemLeak.h
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
 
 /c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
 column.h

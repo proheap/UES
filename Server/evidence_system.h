@@ -2,11 +2,10 @@
 #define SERVER_EVIDENCE_SYSTEM_H
 
 #include "table.h"
-#include "./structures/linked_list.h"
 #include "../CMemLeak.h"
 
 typedef struct evidence_system {
-    LINKED_LIST* tables;
+    TABLE* table;
     int countTables;
 } EVIDENCE_SYSTEM;
 
