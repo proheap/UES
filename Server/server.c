@@ -54,18 +54,11 @@ int main(int argc, char* argv[]) {
 	//inicializacia dat zdielanych medzi vlaknami
     DATA data;
 	data_init(&data, userName, clientSocket);
-	
-	//vytvorenie vlakna pre zapisovanie dat do socketu <pthread.h>
-    pthread_t thread;
-    pthread_create(&thread, NULL, data_writeData, (void *)&data);
 
 	//v hlavnom vlakne sa bude vykonavat citanie dat zo socketu
 	EVIDENCE_SYSTEM es;
 	esInit(&es);
 	data_readData((void *)&data, &es);
-
-	//pockame na skoncenie zapisovacieho vlakna <pthread.h>
-	pthread_join(thread, NULL);
 	data_destroy(&data);
 	
     //uzavretie socketu klienta <unistd.h>

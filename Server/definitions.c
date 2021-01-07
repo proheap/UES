@@ -8,8 +8,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-char *endMsg = ":end";
-
 void data_init(DATA *data, const char* userName, const int socket) {
 	data->socket = socket;
 	data->stop = 0;
@@ -18,17 +16,17 @@ void data_init(DATA *data, const char* userName, const int socket) {
 	pthread_mutex_init(&data->mutex, NULL);
 }
 
-void data_destroy(DATA *data) {
+void data_destroy(DATA* data) {
 	pthread_mutex_destroy(&data->mutex);
 }
 
-void data_stop(DATA *data) {
+void data_stop(DATA* data) {
     pthread_mutex_lock(&data->mutex);
     data->stop = 1;
     pthread_mutex_unlock(&data->mutex);
 }
 
-int data_isStopped(DATA *data) {
+int data_isStopped(DATA* data) {
     int stop;
     pthread_mutex_lock(&data->mutex);
     stop = data->stop;
@@ -36,22 +34,39 @@ int data_isStopped(DATA *data) {
     return stop;
 }
 
-static void data_answer(char* buffer, EVIDENCE_SYSTEM* es) {
+static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
     switch (*buffer) {
         case '1':
-            esAddTable(es, *(buffer + 1) - '0', buffer);
+            esCreateTable(es, *(buffer + 1) - '0', buffer);
+            break;
+        case '2':
+            break;
+        case '3':
+            if(*(buffer + 1) != '\0') {
+                esGetColumnsType(es, buffer);
+                data_writeData(data, buffer);
+            } else {
+                esAddEntry(es, buffer);
+            }
+        case '5':
+            for (int i = 0; i < es->table->countEntries; i++) {
+                esGetTableEntry(es, i, buffer);
+                data_writeData(data ,buffer);
+            }
+            esPrintTable(es->table);
+            break;
     }
 }
 
-void *data_readData(void *data, EVIDENCE_SYSTEM* es) {
-    DATA *pdata = (DATA *)data;
+void* data_readData(void* data, EVIDENCE_SYSTEM* es) {
+    DATA* pdata = (DATA *)data;
     char buffer[BUFFER_LENGTH + 1];
 	buffer[BUFFER_LENGTH] = '\0';
     while(!data_isStopped(pdata)) {
 		bzero(buffer, BUFFER_LENGTH);
 		if (read(pdata->socket, buffer, BUFFER_LENGTH) > 0) {
-				printf("%s\n", buffer);
-				data_answer(buffer, es);
+		    printf("%s\n", buffer);
+		    data_answer(data, buffer, es);
 		}
 		else {
 			data_stop(pdata);
@@ -61,45 +76,18 @@ void *data_readData(void *data, EVIDENCE_SYSTEM* es) {
 	return NULL;
 }
 
-void *data_writeData(void *data) {    
-    DATA *pdata = (DATA *)data;
-    char buffer[BUFFER_LENGTH + 1];
-	buffer[BUFFER_LENGTH] = '\0';
-	int userNameLength = strlen(pdata->userName);
+void* data_writeData(void* data, char* buffer) {
+    DATA* pdata = (DATA *)data;
 
-	//pre pripad, ze chceme poslat viac dat, ako je kapacita buffra
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(STDIN_FILENO, F_GETFL, 0) | O_NONBLOCK);
-	fd_set inputs;
-    FD_ZERO(&inputs);
-	struct timeval tv;
-	tv.tv_usec = 0;
     while(!data_isStopped(pdata)) {
-		tv.tv_sec = 1;
-		FD_SET(STDIN_FILENO, &inputs);
-		select(STDIN_FILENO + 1, &inputs, NULL, NULL, &tv);
-		if (FD_ISSET(STDIN_FILENO, &inputs)) {
-			sprintf(buffer, "%s: ", pdata->userName);
-			char *textStart = buffer + (userNameLength + 2);
-			while (fgets(textStart, BUFFER_LENGTH - (userNameLength + 2), stdin) > 0) {
-				char *pos = strchr(textStart, '\n');
-				if (pos != NULL) {
-					*pos = '\0';
-				}
-				write(pdata->socket, buffer, strlen(buffer) + 1);
-				
-				if (strstr(textStart, endMsg) == textStart && strlen(textStart) == strlen(endMsg)) {
-					printf("Koniec komunikacie.\n");
-					data_stop(pdata);
-				}
-			}
-        }
+        write(pdata->socket, buffer, strlen(buffer) + 1);
+        data_stop(pdata);
     }
-	fcntl(STDIN_FILENO, F_SETFL, fcntl(STDIN_FILENO, F_GETFL, 0) & ~O_NONBLOCK);
-	
-	return NULL;
+
+    return NULL;
 }
 
-void printError(char *str) {
+void printError(char* str) {
     if (errno != 0) {
 		perror(str);
 	}

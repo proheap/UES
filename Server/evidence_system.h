@@ -6,16 +6,16 @@
 
 typedef struct evidence_system {
     TABLE* table;
-    int countTables;
 } EVIDENCE_SYSTEM;
 
 void esInit(EVIDENCE_SYSTEM* es);
-bool esAddTable(EVIDENCE_SYSTEM* es, int countColumns, char* buffer);
-bool esRemoveTable(EVIDENCE_SYSTEM* es, int indexTable);
-bool esAddEntry(EVIDENCE_SYSTEM* es, int indexTable);
-bool esRemoveEntry(EVIDENCE_SYSTEM* es, int indexTable);
-void esPrintTable(EVIDENCE_SYSTEM* es, int indexTable);
-void esPrintTableString(EVIDENCE_SYSTEM* es, int indexTable);
-void esSortTable(EVIDENCE_SYSTEM* es, int indexTable);
+bool esCreateTable(EVIDENCE_SYSTEM* es, int countColumns, char* buffer);
+bool esRemoveTable(EVIDENCE_SYSTEM* es);
+bool esGetColumnsType(EVIDENCE_SYSTEM* es, char* buffer);
+bool esAddEntry(EVIDENCE_SYSTEM* es, char* buffer);
+bool esGetTableEntry(EVIDENCE_SYSTEM* es, int indexEntry, char* buffer);
+void esPrintTable(EVIDENCE_SYSTEM* es);
+void esPrintTableString(EVIDENCE_SYSTEM* es);
+void esSortTable(EVIDENCE_SYSTEM* es);
 
 #endif //SERVER_EVIDENCE_SYSTEM_H

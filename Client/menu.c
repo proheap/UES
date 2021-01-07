@@ -2,6 +2,8 @@
 
 #include "menu.h"
 
+bool reading = false;
+
 static void printMenu() {
     printf("UNIVERZALNY EVIDENCNY SYSTEM\n");
     printf("----------------------------\n");
@@ -55,34 +57,92 @@ static void menuRemoveTable(char* buffer) {
     }
 }
 
+static void findColumnType(char* buffer, char* type) {
+    switch (*(buffer + 1 + i)) {
+        case '0':
+            strcpy(type, "INT");
+        case '1':
+            strcpy(type, "DOUBLE");
+        case '2':
+            strcpy(type, "STRING");
+        case '3':
+            strcpy(type, "BOOLEAN");
+    }
+}
+
+void printColumnsType(char* buffer) {
+    int countColumns = *buffer - '0';
+    char* type = "";
+    char* input;
+    for (int i = 0; i < countColumns; i++) {
+        findColumnType(buffer, type);
+        printf("Zadajte data pre %d. stlpec (typ %s):\n", i + 1, type);
+        fgets(input, sizeof(input), stdin);
+        char *pos = strchr(input, '\n');
+        if (pos != NULL) {
+            *pos = '\0';
+        }
+    }
+    reading = false;
+}
+
 static void menuAddEntry() {
     printf("PRIDANIE ZAZNAMU DO TABULKY\n");
     printf("---------------------------\n");
+    reading = true;
+    while (!reading);
+
+}
+
+void printTable(char* buffer, bool lastEntry) {
+    printf("%s\n", buffer);
+    if (lastEntry) {
+        reading = false;
+    }
 }
 
 static void menuRemoveEntry() {
     printf("ODSTRANENIE ZAZNAMU Z TABULKY\n");
     printf("-----------------------------\n");
-
-    printf("Zadajte, z ktorej tabulky chcete odstranit zaznam.\n");
-
+    reading = true;
+    while (!reading);
+    printf("Zadajte ID zaznamu tabulky, z ktorej chcete zaznam odstranit.\n");
+    int input;
+    scanf("%d", &input);
+    getchar();
 }
 
 static void menuPrintTable() {
     printf("VYPISANIE ZAZNAMOV TABULKY\n");
     printf("--------------------------\n");
-
-    printf("Zadajte, ktoru tabulku chcete vypisat.\n");
-
-
+    reading = true;
+    while (!reading);
+    printf("--------------------------\n");
+    printf("0. Spat\n");
+    int input;
+    do {
+        scanf("%d", &input);
+        getchar();
+    } while (input != 0);
 }
 
 static void menuPrintTableString() {
     printf("VYPISANIE ZAZNAMOV TABULKY OBSAHUJUCE RETAZEC\n");
-    printf("---------------------------------------------\n");
+    printf("-----------------------------------------------\n");
+    reading = true;
+    while (!reading);
+    printf("-----------------------------------------------\n");
+    printf("0. Spat\n");
+    int input;
+    do {
+        scanf("%d", &input);
+        getchar();
+    } while (input != 0);
+}
 
-    printf("Zadajte, ktoru tabulku chcete vypisat.\n");
-
+static void menuSortTable() {
+    printf("UTRIEDENIE TABULKY\n");
+    printf("------------------\n");
 
 }
 

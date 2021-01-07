@@ -12,8 +12,7 @@ enum type_tag {
     INT_TYPE,
     DOUBLE_TYPE,
     STRING_TYPE,
-    BOOL_TYPE,
-    STRUCT_TYPE
+    BOOL_TYPE
 };
 
 typedef struct item {

@@ -15,9 +15,6 @@ void itemAddData(ITEM *item, void *data) {
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);
             break;
-        case STRUCT_TYPE:
-            dataSize = sizeof(void *);
-            break;
     }
     item->data = calloc(1 , dataSize);
 
@@ -39,9 +36,6 @@ void itemCopy(const ITEM *src, ITEM *dest, const enum type_tag type) {
             break;
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);
-            break;
-        case STRUCT_TYPE:
-            dataSize = sizeof(void *);
             break;
     }
     dest->data = calloc(1 , dataSize);
@@ -65,9 +59,6 @@ void itemSetData(ITEM* item, const void *data, const enum type_tag type) {
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);
             break;
-        case STRUCT_TYPE:
-            dataSize = sizeof(void *);
-            break;
     }
     item->data = realloc(item->data, dataSize);
 
@@ -88,9 +79,6 @@ void* itemGetData(const ITEM *item, void *data) {
             break;
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);
-            break;
-        case STRUCT_TYPE:
-            dataSize = sizeof(void *);
             break;
     }
     data = calloc(1 , dataSize);
@@ -117,9 +105,6 @@ void itemPrint(const ITEM *item) {
         case BOOL_TYPE:
             printf("[%s] ", *((_Bool*)item->data) ? "true" : "false");
             break;
-        case STRUCT_TYPE:
-            printf("[STRUCT]");
-            break;
     }
 }
 
@@ -138,8 +123,6 @@ void itemPrintData(const void *data, const enum type_tag type) {
         case BOOL_TYPE:
             printf("[%s] ", *((_Bool*)data) ? "true" : "false");
             break;
-        case STRUCT_TYPE:
-            break;
     }
 }
 
@@ -156,8 +139,6 @@ void itemFilePrint(const ITEM *item, FILE *txtFile) {
             break;
         case BOOL_TYPE:
             fprintf(txtFile, "%d:%d\n", item->type, *((_Bool*)item->data));
-            break;
-        case STRUCT_TYPE:
             break;
     }
 }

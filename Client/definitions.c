@@ -8,9 +8,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-char *endMsg = ":end";
-
-void data_init(DATA *data, const char* userName, const int socket) {
+void data_init(DATA* data, const char* userName, const int socket) {
 	data->socket = socket;
 	data->stop = 0;
 	data->userName[USER_LENGTH] = '\0';
@@ -18,17 +16,17 @@ void data_init(DATA *data, const char* userName, const int socket) {
 	pthread_mutex_init(&data->mutex, NULL);
 }
 
-void data_destroy(DATA *data) {
+void data_destroy(DATA* data) {
 	pthread_mutex_destroy(&data->mutex);
 }
 
-void data_stop(DATA *data) {
+void data_stop(DATA* data) {
     pthread_mutex_lock(&data->mutex);
     data->stop = 1;
     pthread_mutex_unlock(&data->mutex);
 }
 
-int data_isStopped(DATA *data) {
+int data_isStopped(DATA* data) {
     int stop;
     pthread_mutex_lock(&data->mutex);
     stop = data->stop;
@@ -36,10 +34,11 @@ int data_isStopped(DATA *data) {
     return stop;
 }
 
-void *data_readData(void *data) {    
-    DATA *pdata = (DATA *)data;
+void* data_readData(void* data) {
+    DATA* pdata = (DATA *)data;
     char buffer[BUFFER_LENGTH + 1];
 	buffer[BUFFER_LENGTH] = '\0';
+
     while(!data_isStopped(pdata)) {
 		bzero(buffer, BUFFER_LENGTH);
 		if (read(pdata->socket, buffer, BUFFER_LENGTH) > 0) {
@@ -62,13 +61,11 @@ void *data_readData(void *data) {
 	return NULL;
 }
 
-void *data_writeData(void *data) {
+void* data_writeData(void* data) {
     DATA *pdata = (DATA *)data;
     char buffer[BUFFER_LENGTH + 1];
-    buffer[0] = '\0';
-    int userNameLength = strlen(pdata->userName);
+    buffer[BUFFER_LENGTH] = '\0';
 
-    //pre pripad, ze chceme poslat viac dat, ako je kapacita buffra
     while(!data_isStopped(pdata)) {
         while (menu(buffer) == 1) {
             write(pdata->socket, buffer, strlen(buffer) + 1);
@@ -79,7 +76,7 @@ void *data_writeData(void *data) {
 	return NULL;
 }
 
-void printError(char *str) {
+void printError(char* str) {
     if (errno != 0) {
 		perror(str);
 	}

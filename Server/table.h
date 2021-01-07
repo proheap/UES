@@ -12,5 +12,9 @@ typedef struct table {
 
 void tableInit(TABLE* table, int countColumns);
 void tableAddColumns(TABLE* table, char* buffer);
+bool tableGetColumnsType(TABLE* table, char* buffer);
+bool tableAddEntry(TABLE* table, char* buffer);
+bool tableGetEntry(TABLE* table, int indexEntry, char* buffer);
+void tablePrint(TABLE* table);
 
 #endif //SERVER_TABLE_H

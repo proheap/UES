@@ -14,4 +14,5 @@ typedef enum stateMenu {
     SORT_TABLE
 } STATE_MENU;
 
+
 #endif //CLIENT_STATE_H
