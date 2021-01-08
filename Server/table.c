@@ -39,13 +39,19 @@ bool tableGetColumnsType(const TABLE* table, char* buffer) {
 }
 
 bool tableAddEntry(TABLE* table, char* buffer) {
-    void* data;
-    char* p1 = buffer;
+    char* p1 = strchr(buffer, ':');
+    p1++;
     for (int c = 0; c < table->countColumns; c++) {
-        char* p2 = strchr(p1, ':');
-        data = (void*)(p2 - p1);
-        columnAddEntry(table->columns[c], data);
-        p1 = p2 + 1;
+        char data[DATA_SIZE] = "\0";
+        if (c != table->countColumns - 1) {
+            char *p2 = strchr(p1, ':');
+            strncpy(data, p1, p2 - p1);
+            columnAddEntry(table->columns[c], data);
+            p1 = p2 + 1;
+        } else {
+            strncpy(data, p1, strlen(p1));
+            columnAddEntry(table->columns[c], data);
+        }
     }
     table->countEntries++;
     return true;
@@ -58,9 +64,10 @@ bool tableGetEntry(const TABLE* table, const int indexEntry, char* buffer) {
 
     void* data;
     for (int c = 0; c < table->countColumns; c++) {
-        if (!columnGetEntry(table->columns[c], indexEntry, data)) {
-            return false;
-        }
+        columnGetEntry(table->columns[c], indexEntry, data);
+//        if (!columnGetEntry(table->columns[c], indexEntry, data)) {
+//            return false;
+//        }
         strcat(buffer, (char*)data);
         if(c != table->countColumns - 1) {
             strcat(buffer, ":");
@@ -74,6 +81,10 @@ bool tableGetEntry(const TABLE* table, const int indexEntry, char* buffer) {
 void tablePrint(const TABLE* table) {
     printf("Zaznamy tabulky:\n");
     printf("----------------\n");
+    for (int c = 0; c < table->countColumns; c++) {
+        columnPrintType(table->columns[c]);
+    }
+    printf("\n");
     for (int i = 0; i < table->countEntries; i++) {
         for (int c = 0; c < table->countColumns; c++) {
             columnPrintData(table->columns[c], i);

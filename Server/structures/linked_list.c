@@ -47,7 +47,7 @@ void llPrint(const LINKED_LIST *list) {
 }
 
 void llAdd(LINKED_LIST *list, void* data, enum type_tag type) {
-    ITEM* newItem = calloc(1, sizeof(ITEM));
+    ITEM* newItem = malloc(sizeof(ITEM));
     newItem->type = type;
 
     itemAddData(newItem, data);
@@ -124,7 +124,7 @@ _Bool llTrySet(LINKED_LIST *list, int pos, void *data) {
 _Bool llTryGet(LINKED_LIST *list, int pos, void *data) {
     if (pos >= 0 && pos < list->size) {
         ITEM* item = getItemAtIndex(list, pos);
-        data = itemGetData(item, data);
+        itemGetData(item, data);
         return true;
     } else {
         return false;

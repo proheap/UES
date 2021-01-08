@@ -8,8 +8,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-char buffer[BUFFER_LENGTH + 1];
-
 void data_init(DATA* data, const char* userName, const int socket) {
 	data->socket = socket;
 	data->stop = 0;
@@ -41,11 +39,14 @@ static void data_answer(char* buffer) {
         case '3':
             printColumnsType(buffer);
             break;
+        default:
+            printTable(buffer, *buffer - '0');
     }
 }
 
 void* data_readData(void* data) {
     DATA* pdata = (DATA *)data;
+    char buffer[BUFFER_LENGTH + 1];
 	buffer[BUFFER_LENGTH] = '\0';
 
     while(!data_isStopped(pdata)) {
@@ -64,6 +65,7 @@ void* data_readData(void* data) {
 
 void* data_writeData(void* data) {
     DATA *pdata = (DATA *)data;
+    char buffer[BUFFER_LENGTH + 1];
     buffer[BUFFER_LENGTH] = '\0';
 
     while(!data_isStopped(pdata)) {

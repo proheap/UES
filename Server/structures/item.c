@@ -1,6 +1,6 @@
 #include "item.h"
 
-void itemAddData(ITEM *item, void *data) {
+static size_t getDataTypeSize(const ITEM *item) {
     size_t dataSize;
     switch (item->type) {
         case INT_TYPE:
@@ -10,12 +10,17 @@ void itemAddData(ITEM *item, void *data) {
             dataSize = sizeof(double);
             break;
         case STRING_TYPE:
-            dataSize = strlen((char*)data) * sizeof(char);
+            dataSize = strlen((char *) item->data) * sizeof(char);
             break;
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);
             break;
     }
+    return dataSize;
+}
+
+void itemAddData(ITEM *item, void *data) {
+    size_t dataSize = getDataTypeSize(item);
     item->data = calloc(1 , dataSize);
 
     memcpy(item->data, data, dataSize);
@@ -23,21 +28,7 @@ void itemAddData(ITEM *item, void *data) {
 
 void itemCopy(const ITEM *src, ITEM *dest, const enum type_tag type) {
     dest->type = type;
-    size_t dataSize;
-    switch (type) {
-        case INT_TYPE:
-            dataSize = sizeof(int);
-            break;
-        case DOUBLE_TYPE:
-            dataSize = sizeof(double);
-            break;
-        case STRING_TYPE:
-            dataSize = strlen((char*) src->data) * sizeof(char);
-            break;
-        case BOOL_TYPE:
-            dataSize = sizeof(_Bool);
-            break;
-    }
+    size_t dataSize = getDataTypeSize(src);
     dest->data = calloc(1 , dataSize);
 
     memcpy(dest->data, src->data, dataSize);
@@ -45,42 +36,14 @@ void itemCopy(const ITEM *src, ITEM *dest, const enum type_tag type) {
 
 void itemSetData(ITEM* item, const void *data, const enum type_tag type) {
     item->type = type;
-    size_t dataSize;
-    switch (type) {
-        case INT_TYPE:
-            dataSize = sizeof(int);
-            break;
-        case DOUBLE_TYPE:
-            dataSize = sizeof(double);
-            break;
-        case STRING_TYPE:
-            dataSize = strlen((char*) data) * sizeof(char);
-            break;
-        case BOOL_TYPE:
-            dataSize = sizeof(_Bool);
-            break;
-    }
+    size_t dataSize = getDataTypeSize(item);
     item->data = realloc(item->data, dataSize);
 
     memcpy(item->data, data, dataSize);
 }
 
 void* itemGetData(const ITEM *item, void *data) {
-    size_t dataSize;
-    switch (item->type) {
-        case INT_TYPE:
-            dataSize = sizeof(int);
-            break;
-        case DOUBLE_TYPE:
-            dataSize = sizeof(double);
-            break;
-        case STRING_TYPE:
-            dataSize = strlen((char*) item->data) * sizeof(char);
-            break;
-        case BOOL_TYPE:
-            dataSize = sizeof(_Bool);
-            break;
-    }
+    size_t dataSize = getDataTypeSize(item);
     data = calloc(1 , dataSize);
 
     memcpy(data, item->data, dataSize);

@@ -10,9 +10,7 @@ extern "C" {
 #endif
 
 #define USER_LENGTH 10
-#define BUFFER_LENGTH 300
-
-extern char buffer[BUFFER_LENGTH + 1];
+#define BUFFER_LENGTH 100
 
 typedef struct data {
     char userName[USER_LENGTH + 1];

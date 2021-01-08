@@ -8,7 +8,7 @@
 
 #include "state.h"
 
-#define INPUT_SIZE 10
+#define INPUT_SIZE 50
 #define TYPE_SIZE 10
 
 extern STATE_MENU stateMenu;

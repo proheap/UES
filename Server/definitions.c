@@ -55,11 +55,15 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
             break;
         case '5':
             for (int i = 0; i < es->table->countEntries; i++) {
-                strcpy(buffer,"\0");
+                if (i != es->table->countEntries - 1) {
+                    strncpy(buffer,"0", BUFFER_LENGTH);
+                } else {
+                    strncpy(buffer,"1", BUFFER_LENGTH);
+                }
                 esGetTableEntry(es, i, bufferSending);
                 data_writeData(data, bufferSending);
             }
-            esPrintTable(es);
+            //esPrintTable(es);
             break;
         case '6':
             esGetStringTableEntry(es, buffer + 1, bufferSending);

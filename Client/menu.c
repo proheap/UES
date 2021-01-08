@@ -7,7 +7,7 @@ STATE_READING stateReading = BEFORE;
 bool reading = false;
 
 static void readStringInput(char* input) {
-    fgets(input, sizeof(input), stdin);
+    fgets(input, INPUT_SIZE, stdin);
     char *pos = strchr(input, '\n');
     if (pos != NULL) {
         *pos = '\0';
@@ -59,7 +59,7 @@ static void menuCreateTable(char* buffer) {
 
 static void menuRemoveTable(char* buffer) {
     int input;
-    strcpy(buffer, '\0');
+    strncpy(buffer, "\0", strlen(buffer));
     printf("ODSTRANENIE TABULKY\n");
     printf("-------------------\n");
     printf("Naozaj chcete odstranit tabulku? (0 - NIE, 1 - ANO)\n");
@@ -94,22 +94,14 @@ void printColumnsType(char* buffer) {
     char bufferTypes[strlen(buffer)];
     strncpy(bufferTypes, buffer + 2, strlen(buffer));
     char type[TYPE_SIZE];
-    strncpy(buffer, "31", strlen(buffer));
 
-    char input[INPUT_SIZE];
+    printf("Zadajte zaznam v tvare: ");
     for (int i = 0; i < countColumns; i++) {
         findColumnType(*(bufferTypes + i), type);
-        printf("Zadajte data pre %d. stlpec (typ %s):\n", i + 1, type);
-        fgets(input, sizeof(input), stdin);
-        char *pos = strchr(input, '\n');
-        if (pos != NULL) {
-            *pos = '\0';
-        }
-        strcat(buffer, input);
         if (i != countColumns - 1) {
-            strcat(buffer, ":");
+            printf("%s:", type);
         } else {
-            *(buffer + strlen(buffer)) = '\0';
+            printf("%s\n", type);
         }
     }
     stateReading = AFTER;
@@ -117,7 +109,7 @@ void printColumnsType(char* buffer) {
 }
 
 static void menuAddEntry(char* buffer) {
-    *buffer = '3';
+    strncpy(buffer, "3", strlen(buffer));
     if (stateReading == BEFORE) {
         *(buffer + 1) = '0';
         *(buffer + 2) = '\0';
@@ -125,13 +117,18 @@ static void menuAddEntry(char* buffer) {
         printf("---------------------------\n");
         reading = true;
     } else {
+        *(buffer + 1) = '1';
+        *(buffer + 2) = ':';
+        char entry[INPUT_SIZE];
+        readStringInput(&entry);
+        strcat(buffer, entry);
         stateReading = BEFORE;
         stateMenu = START;
     }
 }
 
 void printTable(char* buffer, const bool lastEntry) {
-    printf("%s\n", buffer);
+    printf("%s\n", buffer + 1);
     if (lastEntry) {
         reading = false;
         stateReading = AFTER;
@@ -159,7 +156,7 @@ static void menuRemoveEntry(char* buffer) {
 }
 
 static void menuPrintTable(char* buffer) {
-    strcpy(buffer, '\0');
+    strncpy(buffer, "\0", strlen(buffer));
     if (stateReading == BEFORE) {
         *buffer = '5';
         printf("VYPISANIE ZAZNAMOV TABULKY\n");
@@ -178,7 +175,7 @@ static void menuPrintTable(char* buffer) {
 }
 
 static void menuPrintTableString(char* buffer) {
-    strcpy(buffer, '\0');
+    *buffer = '\0';
     if (stateReading == BEFORE) {
         char input[INPUT_SIZE];
         *buffer = '6';
@@ -201,7 +198,6 @@ static void menuPrintTableString(char* buffer) {
 }
 
 static void menuSortTable(char* buffer) {
-    strcpy(buffer, '\0');
     *buffer = '6';
     if (stateReading == BEFORE) {
         char input[INPUT_SIZE];
