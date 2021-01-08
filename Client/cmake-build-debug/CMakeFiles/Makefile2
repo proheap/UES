@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-bu
 CMakeFiles/Client.dir/all:
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/depend
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4,5 "Built target Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4 "Built target Client"
 .PHONY : CMakeFiles/Client.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/Client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" 5
+	$(CMAKE_COMMAND) -E cmake_progress_start "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/Client.dir/rule

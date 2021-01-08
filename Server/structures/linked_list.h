@@ -21,6 +21,7 @@ void llAdd(LINKED_LIST *list, void *data, enum type_tag type);
 _Bool llTryInsert(LINKED_LIST *list, void *data, enum type_tag type, int pos);
 _Bool llTrySet(LINKED_LIST *list, int pos, void *data);
 _Bool llTryGet(LINKED_LIST *list, int pos, void *data);
+_Bool llTrySwap(LINKED_LIST *list, int indexItem1, int indexItem2);
 void* llTryRemove(LINKED_LIST *list, int pos, void **data);
 _Bool llTryCopy(const LINKED_LIST *src, LINKED_LIST *dest);
 void llReadFromTxt(LINKED_LIST *list, FILE *txtFile);

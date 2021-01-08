@@ -64,24 +64,6 @@ table.h
 ../CMemLeak.h
 /c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
 
-/c/Users/Martin/Documents/CLion Projects/UES/Server/server.c
-definitions.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/definitions.h
-stdlib.h
--
-string.h
--
-sys/socket.h
--
-arpa/inet.h
--
-unistd.h
--
-pthread.h
--
-../CMemLeak.h
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
-
 /c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
 column.h
 /c/Users/Martin/Documents/CLion Projects/UES/Server/column.h

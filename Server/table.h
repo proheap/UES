@@ -10,11 +10,16 @@ typedef struct table {
     int countEntries;
 } TABLE;
 
-void tableInit(TABLE* table, int countColumns);
+void tableInit(TABLE* table, const int countColumns);
+void tableDispose(TABLE* table);
 void tableAddColumns(TABLE* table, char* buffer);
-bool tableGetColumnsType(TABLE* table, char* buffer);
+bool tableGetColumnsType(const TABLE* table, char* buffer);
 bool tableAddEntry(TABLE* table, char* buffer);
-bool tableGetEntry(TABLE* table, int indexEntry, char* buffer);
-void tablePrint(TABLE* table);
+bool tableRemoveEntry(TABLE* table, int indexEntry);
+bool tableGetEntry(const TABLE* table, const int indexEntry, char* buffer);
+void tablePrint(const TABLE* table);
+bool tableGetStringEntry(const TABLE* table, const char* str, char* buffer);
+void tableStringPrint(const TABLE* table, char* str);
+bool tableSort(TABLE* table, const int indexColumn, const bool ascending);
 
 #endif //SERVER_TABLE_H

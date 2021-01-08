@@ -52,10 +52,10 @@ int main(int argc, char *argv[]) {
 
 	//vytvorenie vlakna pre zapisovanie dat do socketu <pthread.h>
     pthread_t thread;
-    pthread_create(&thread, NULL, data_readData, (void *)&data);
+    pthread_create(&thread, NULL, data_writeData, (void *)&data);
 
 	//v hlavnom vlakne sa bude vykonavat citanie dat zo socketu
-	data_writeData((void *)&data);
+    data_readData((void *)&data);
 
     //pockame na skoncenie zapisovacieho vlakna <pthread.h>
 	pthread_join(thread, NULL);

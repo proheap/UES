@@ -204,33 +204,6 @@ menu.c.s:
 	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/menu.c.s
 .PHONY : menu.c.s
 
-state.o: state.c.o
-
-.PHONY : state.o
-
-# target to build an object file
-state.c.o:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/state.c.o
-.PHONY : state.c.o
-
-state.i: state.c.i
-
-.PHONY : state.i
-
-# target to preprocess a source file
-state.c.i:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/state.c.i
-.PHONY : state.c.i
-
-state.s: state.c.s
-
-.PHONY : state.s
-
-# target to generate assembly for a file
-state.c.s:
-	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/state.c.s
-.PHONY : state.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -249,9 +222,6 @@ help:
 	@echo "... menu.o"
 	@echo "... menu.i"
 	@echo "... menu.s"
-	@echo "... state.o"
-	@echo "... state.i"
-	@echo "... state.s"
 .PHONY : help
 
 

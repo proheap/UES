@@ -7,7 +7,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/c/Users/Martin/Documents/CLion Projects/UES/Client/client.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/client.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/definitions.c.o"
   "/c/Users/Martin/Documents/CLion Projects/UES/Client/menu.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/menu.c.o"
-  "/c/Users/Martin/Documents/CLion Projects/UES/Client/state.c" "/c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug/CMakeFiles/Client.dir/state.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

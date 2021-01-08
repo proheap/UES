@@ -93,9 +93,6 @@
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/menu.h">
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/state.c">
-			<Option target="Client"/>
-		</Unit>
 		<Unit filename="/c/Users/Martin/Documents/CLion Projects/UES/Client/state.h">
 			<Option target="Client"/>
 		</Unit>

@@ -16,6 +16,3 @@ CMakeFiles/Client.dir/menu.c.o: ../menu.c
 CMakeFiles/Client.dir/menu.c.o: ../menu.h
 CMakeFiles/Client.dir/menu.c.o: ../state.h
 
-CMakeFiles/Client.dir/state.c.o: ../state.c
-CMakeFiles/Client.dir/state.c.o: ../state.h
-

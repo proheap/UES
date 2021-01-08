@@ -87,27 +87,48 @@ void* itemGetData(const ITEM *item, void *data) {
     return data;
 }
 
-void itemDeleteData(ITEM *item) {
-    free(item->data);
-}
-
-void itemPrint(const ITEM *item) {
-    switch (item->type) {
+int itemCompareData(const void *data1, const void *data2, const enum type_tag type){
+    switch (type) {
         case INT_TYPE:
-            printf("[%d] ", *((int*)item->data));
-            break;
+            if (*((int*)data1) > *((int*)data2)) {
+                return 1;
+            } else if (*((int*)data1) < *((int*)data2)) {
+                return -1;
+            } else {
+                return 0;
+            }
         case DOUBLE_TYPE:
-            printf("[%lfs] ", *((double*)item->data));
-            break;
+            if (*((double*)data1) > *((double*)data2)) {
+                return 1;
+            } else if (*((double*)data1) < *((double*)data2)) {
+                return -1;
+            } else {
+                return 0;
+            }
         case STRING_TYPE:
-            printf("[%s] ", (char*)item->data);
-            break;
+                return strcmp((char*)data1, (char*) data2);
         case BOOL_TYPE:
-            printf("[%s] ", *((_Bool*)item->data) ? "true" : "false");
-            break;
+            if (*((_Bool*)data1) > *((_Bool*)data2)) {
+                return 1;
+            } else if (*((_Bool*)data1) < *((_Bool*)data2)) {
+                return -1;
+            } else {
+                return 0;
+            }
     }
 }
 
+int itemCompare(const ITEM *item1, const ITEM *item2) {
+    if (item1->type != item2->type) {
+        fprintf(stderr, "Comparing items are not same types!\n");
+        exit(EXIT_FAILURE);
+    }
+    return itemCompareData(item1->data, item2->data, item1->type);
+}
+
+void itemDeleteData(ITEM *item) {
+    free(item->data);
+}
 
 void itemPrintData(const void *data, const enum type_tag type) {
     switch (type) {
@@ -124,6 +145,10 @@ void itemPrintData(const void *data, const enum type_tag type) {
             printf("[%s] ", *((_Bool*)data) ? "true" : "false");
             break;
     }
+}
+
+void itemPrint(const ITEM *item) {
+    itemPrintData(item->data, item->type);
 }
 
 void itemFilePrint(const ITEM *item, FILE *txtFile) {

@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-typedef enum stateMenu {
+typedef enum state_menu {
     START,
     CREATE_TABLE,
     REMOVE_TABLE,
@@ -13,6 +13,11 @@ typedef enum stateMenu {
     PRINT_TABLE_STRING,
     SORT_TABLE
 } STATE_MENU;
+
+typedef enum state_reading {
+    BEFORE,
+    AFTER
+} STATE_READING;
 
 
 #endif //CLIENT_STATE_H

@@ -35,25 +35,38 @@ int data_isStopped(DATA* data) {
 }
 
 static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
+    char bufferSending[BUFFER_LENGTH + 1];
     switch (*buffer) {
         case '1':
             esCreateTable(es, *(buffer + 1) - '0', buffer);
             break;
         case '2':
+            esRemoveTable(es);
             break;
         case '3':
-            if(*(buffer + 1) != '\0') {
-                esGetColumnsType(es, buffer);
-                data_writeData(data, buffer);
+            if(*(buffer + 1) == '0') {
+                esGetColumnsType(es, bufferSending);
+                data_writeData(data, bufferSending);
             } else {
                 esAddEntry(es, buffer);
             }
+            break;
+        case '4':
+            break;
         case '5':
             for (int i = 0; i < es->table->countEntries; i++) {
-                esGetTableEntry(es, i, buffer);
-                data_writeData(data ,buffer);
+                strcpy(buffer,"\0");
+                esGetTableEntry(es, i, bufferSending);
+                data_writeData(data, bufferSending);
             }
-            esPrintTable(es->table);
+            esPrintTable(es);
+            break;
+        case '6':
+            esGetStringTableEntry(es, buffer + 1, bufferSending);
+            esPrintStringTable(es, buffer + 1);
+            break;
+        case '7':
+            esSortTable(es, *(buffer + 1), *(buffer + 2));
             break;
     }
 }
@@ -78,11 +91,7 @@ void* data_readData(void* data, EVIDENCE_SYSTEM* es) {
 
 void* data_writeData(void* data, char* buffer) {
     DATA* pdata = (DATA *)data;
-
-    while(!data_isStopped(pdata)) {
-        write(pdata->socket, buffer, strlen(buffer) + 1);
-        data_stop(pdata);
-    }
+    write(pdata->socket, buffer, strlen(buffer) + 1);
 
     return NULL;
 }

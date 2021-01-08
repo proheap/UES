@@ -131,6 +131,31 @@ _Bool llTryGet(LINKED_LIST *list, int pos, void *data) {
     }
 }
 
+_Bool llTrySwap(LINKED_LIST *list, int posItem1, int posItem2) {
+    if (posItem1 >= 0 && posItem1 < list->size && posItem2 >= 0 && posItem2 < list->size) {
+        ITEM* item1 = getItemAtIndex(list, posItem1);
+        ITEM* prevItem1 = item1->prev;
+        ITEM* nextItem1 = item1->next;
+        ITEM* item2 = getItemAtIndex(list, posItem2);
+        ITEM* prevItem2 = item2->prev;
+        ITEM* nextItem2 = item2->next;
+
+        prevItem2->next = item1;
+        nextItem2->prev = item1;
+        item1->prev = prevItem2;
+        item1->next = nextItem2;
+
+        prevItem1->next = item2;
+        nextItem1->prev = item2;
+        item2->prev = prevItem1;
+        item2->next = nextItem1;
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void* llTryRemove(LINKED_LIST *list, int pos, void **data) {
     if (pos < 0 || pos >= list->size) {
         return NULL;

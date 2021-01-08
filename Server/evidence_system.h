@@ -9,13 +9,15 @@ typedef struct evidence_system {
 } EVIDENCE_SYSTEM;
 
 void esInit(EVIDENCE_SYSTEM* es);
-bool esCreateTable(EVIDENCE_SYSTEM* es, int countColumns, char* buffer);
+bool esCreateTable(EVIDENCE_SYSTEM* es, const int countColumns, char* buffer);
 bool esRemoveTable(EVIDENCE_SYSTEM* es);
-bool esGetColumnsType(EVIDENCE_SYSTEM* es, char* buffer);
+bool esGetColumnsType(const EVIDENCE_SYSTEM* es, char* buffer);
 bool esAddEntry(EVIDENCE_SYSTEM* es, char* buffer);
-bool esGetTableEntry(EVIDENCE_SYSTEM* es, int indexEntry, char* buffer);
-void esPrintTable(EVIDENCE_SYSTEM* es);
-void esPrintTableString(EVIDENCE_SYSTEM* es);
-void esSortTable(EVIDENCE_SYSTEM* es);
+bool esRemoveEntry(EVIDENCE_SYSTEM* es, int indexEntry);
+bool esGetTableEntry(const EVIDENCE_SYSTEM* es, const int indexEntry, char* buffer);
+void esPrintTable(const EVIDENCE_SYSTEM* es);
+bool esGetStringTableEntry(const EVIDENCE_SYSTEM* es, const char* str, char* buffer);
+void esPrintStringTable(const EVIDENCE_SYSTEM* es, char* str);
+bool esSortTable(EVIDENCE_SYSTEM* es, const int indexColumn, const bool ascending);
 
 #endif //SERVER_EVIDENCE_SYSTEM_H

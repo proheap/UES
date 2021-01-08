@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+char buffer[BUFFER_LENGTH + 1];
+
 void data_init(DATA* data, const char* userName, const int socket) {
 	data->socket = socket;
 	data->stop = 0;
@@ -34,24 +36,23 @@ int data_isStopped(DATA* data) {
     return stop;
 }
 
+static void data_answer(char* buffer) {
+    switch (*buffer) {
+        case '3':
+            printColumnsType(buffer);
+            break;
+    }
+}
+
 void* data_readData(void* data) {
     DATA* pdata = (DATA *)data;
-    char buffer[BUFFER_LENGTH + 1];
 	buffer[BUFFER_LENGTH] = '\0';
 
     while(!data_isStopped(pdata)) {
 		bzero(buffer, BUFFER_LENGTH);
 		if (read(pdata->socket, buffer, BUFFER_LENGTH) > 0) {
-			char *posSemi = strchr(buffer, ':');
-			char *pos = strstr(posSemi + 1, endMsg);
-			if (pos != NULL && pos - posSemi == 2 && *(pos + strlen(endMsg)) == '\0') {
-				*(pos - 2) = '\0';
-				printf("Pouzivatel %s ukoncil komunikaciu.\n", buffer);
-				data_stop(pdata);
-			}
-			else {
-				printf("%s\n", buffer);
-			}			
+            printf("%s\n", buffer);
+            data_answer(buffer);
 		}
 		else {
 			data_stop(pdata);
@@ -63,12 +64,13 @@ void* data_readData(void* data) {
 
 void* data_writeData(void* data) {
     DATA *pdata = (DATA *)data;
-    char buffer[BUFFER_LENGTH + 1];
     buffer[BUFFER_LENGTH] = '\0';
 
     while(!data_isStopped(pdata)) {
         while (menu(buffer) == 1) {
-            write(pdata->socket, buffer, strlen(buffer) + 1);
+            if (*buffer != '\0') {
+                write(pdata->socket, buffer, strlen(buffer) + 1);
+            }
         }
         data_stop(pdata);
     }

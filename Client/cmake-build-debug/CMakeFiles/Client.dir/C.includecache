@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.c
+definitions.h
+/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+errno.h
+-
+unistd.h
+-
+fcntl.h
+-
+
+/c/Users/Martin/Documents/CLion Projects/UES/Client/definitions.h
+pthread.h
+-
+menu.h
+/c/Users/Martin/Documents/CLion Projects/UES/Client/menu.h
+
 /c/Users/Martin/Documents/CLion Projects/UES/Client/menu.c
 stdlib.h
 -
@@ -16,6 +38,10 @@ menu.h
 stdio.h
 -
 string.h
+-
+stdbool.h
+-
+unistd.h
 -
 state.h
 /c/Users/Martin/Documents/CLion Projects/UES/Client/state.h
