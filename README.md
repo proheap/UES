@@ -21,13 +21,13 @@ One table stored on server, client works with table on local computer. Client ca
 ----------------------------------------------------------------------------------------------------------------------------------
 ### RUNNING APLICATION
 #### Server translation:
-	gcc Server/server.c Server/definitions.c Server/evidence_system.c Server/table.c Server/column.c /Server/structures/linked_list.c /Server/structures/item.c -o server -pthread
+	gcc server/server.c server/definitions.c server/evidence_system.c server/table.c server/column.c server/structures/linked_list.c server/structures/item.c -o server -pthread
 #### Client translation:
-	gcc Client/client.c Client/definitions.c Client/menu.c -o client -pthread
+	gcc client/client.c client/definitions.c client/menu.c -o client -pthread
 
 #### Running server:
-	./Server/server 10000 server
+	./server/server 10000 server
 #### Running client:
-	./Client/client localhost 10000 client
+	./client/client localhost 10000 client
 	
 ----------------------------------------------------------------------------------------------------------------------------------
