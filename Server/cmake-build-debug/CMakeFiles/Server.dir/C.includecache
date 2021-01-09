@@ -38,22 +38,6 @@ stdlib.h
 ../CMemLeak.h
 /c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
 
-/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/constants.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.c
-item.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.h
-stdio.h
--
-stdlib.h
--
-string.h
--
-constants.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/constants.h
-
 /c/Users/Martin/Documents/CLion Projects/UES/Server/table.c
 table.h
 /c/Users/Martin/Documents/CLion Projects/UES/Server/table.h

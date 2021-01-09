@@ -12,19 +12,20 @@ void llDispose(LINKED_LIST *list) {
 
     while (list->size != 0) {
         curStart = curStart->next;
+        itemDeleteData(list->first);
         free(list->first);
         list->first->prev = NULL;
         list->first->next = NULL;
         list->first = curStart;
 
         curEnd = curEnd->prev;
+        itemDeleteData(list->last);
         free(list->last);
         list->last->next = NULL;
         list->last->prev = NULL;
         list->last = curEnd;
         list->size -= 2;
         if (curStart == curEnd) {
-            free(list->first);
             list->first->next = NULL;
             list->first->prev = NULL;
             list->size--;
@@ -46,7 +47,7 @@ void llPrint(const LINKED_LIST *list) {
     printf("\n");
 }
 
-void llAdd(LINKED_LIST *list, void* data, enum type_tag type) {
+void llAdd(LINKED_LIST *list, const void* data, const enum type_tag type) {
     ITEM* newItem = malloc(sizeof(ITEM));
     newItem->type = type;
 
@@ -64,7 +65,7 @@ void llAdd(LINKED_LIST *list, void* data, enum type_tag type) {
     list->size++;
 }
 
-static ITEM* getItemAtIndex(LINKED_LIST *list, int index) {
+static ITEM* getItemAtIndex(const LINKED_LIST *list, const int index) {
     ITEM* curStart = list->first;
     ITEM* curEnd = list->last;
 
@@ -85,7 +86,7 @@ static ITEM* getItemAtIndex(LINKED_LIST *list, int index) {
     }
 }
 
-_Bool llTryInsert(LINKED_LIST *list, void *data, enum type_tag type, int pos) {
+_Bool llTryInsert(LINKED_LIST *list, const void *data, const enum type_tag type, const int pos) {
     if (pos < 0 || pos > list->size) {
         return false;
     } else if (pos == list->size) {
@@ -111,17 +112,17 @@ _Bool llTryInsert(LINKED_LIST *list, void *data, enum type_tag type, int pos) {
     }
 }
 
-_Bool llTrySet(LINKED_LIST *list, int pos, void *data) {
+_Bool llTrySet(LINKED_LIST *list, const int pos, const void *data) {
     if (pos >= 0 && pos < list->size) {
         ITEM* item = getItemAtIndex(list, pos);
-        itemSetData(data, item->data, item->type);
+        itemSetData(item->data, data, item->type);
         return true;
     } else {
         return false;
     }
 }
 
-_Bool llTryGet(LINKED_LIST *list, int pos, void *data) {
+_Bool llTryGet(const LINKED_LIST *list, const int pos, void **data) {
     if (pos >= 0 && pos < list->size) {
         ITEM* item = getItemAtIndex(list, pos);
         itemGetData(item, data);
@@ -131,7 +132,7 @@ _Bool llTryGet(LINKED_LIST *list, int pos, void *data) {
     }
 }
 
-_Bool llTrySwap(LINKED_LIST *list, int posItem1, int posItem2) {
+_Bool llTrySwap(LINKED_LIST *list, const int posItem1, const int posItem2) {
     if (posItem1 >= 0 && posItem1 < list->size && posItem2 >= 0 && posItem2 < list->size) {
         ITEM* item1 = getItemAtIndex(list, posItem1);
         ITEM* prevItem1 = item1->prev;
@@ -156,19 +157,20 @@ _Bool llTrySwap(LINKED_LIST *list, int posItem1, int posItem2) {
     }
 }
 
-void* llTryRemove(LINKED_LIST *list, int pos, void **data) {
+bool llTryRemove(LINKED_LIST *list, const int pos) {
     if (pos < 0 || pos >= list->size) {
-        return NULL;
+        return false;
     } else {
         ITEM *delItem;
         if (pos == 0) {
             delItem = list->first;
-            list->first = delItem->next;
-            list->first->prev = NULL;
-            itemGetData(delItem, *data);
-            free(delItem);
-            list->size--;
-            return data;
+            if (list->size != 1) {
+                list->first = delItem->next;
+                list->first->prev = NULL;
+            } else {
+                list->first = NULL;
+                list->last = NULL;
+            }
         } else {
             ITEM *prevItem = getItemAtIndex(list, pos - 1);
             delItem = prevItem->next;
@@ -178,10 +180,11 @@ void* llTryRemove(LINKED_LIST *list, int pos, void **data) {
                 list->last = prevItem;
             }
         }
-        data = itemGetData(delItem, data);
+        itemDeleteData(delItem);
         free(delItem);
+        delItem = NULL;
         list->size--;
-        return data;
+        return true;
     }
 }
 

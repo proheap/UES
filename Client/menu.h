@@ -8,6 +8,7 @@
 
 #include "state.h"
 
+#define BUFFER_LENGTH 100
 #define INPUT_SIZE 50
 #define TYPE_SIZE 10
 

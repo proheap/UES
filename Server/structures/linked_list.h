@@ -17,12 +17,12 @@ typedef struct linked_list {
 void llInit(LINKED_LIST *list);
 void llDispose(LINKED_LIST *list);
 void llPrint(const LINKED_LIST *list);
-void llAdd(LINKED_LIST *list, void *data, enum type_tag type);
-_Bool llTryInsert(LINKED_LIST *list, void *data, enum type_tag type, int pos);
-_Bool llTrySet(LINKED_LIST *list, int pos, void *data);
-_Bool llTryGet(LINKED_LIST *list, int pos, void *data);
-_Bool llTrySwap(LINKED_LIST *list, int indexItem1, int indexItem2);
-void* llTryRemove(LINKED_LIST *list, int pos, void **data);
+void llAdd(LINKED_LIST *list, const void *data, const enum type_tag type);
+_Bool llTryInsert(LINKED_LIST *list, const void *data, const enum type_tag type, const int pos);
+_Bool llTrySet(LINKED_LIST *list, const int pos, const void *data);
+_Bool llTryGet(const LINKED_LIST *list, const int pos, void **data);
+_Bool llTrySwap(LINKED_LIST *list, const int indexItem1, const int indexItem2);
+bool llTryRemove(LINKED_LIST *list, const int pos);
 _Bool llTryCopy(const LINKED_LIST *src, LINKED_LIST *dest);
 void llReadFromTxt(LINKED_LIST *list, FILE *txtFile);
 void llWriteToTxt(const LINKED_LIST *list, FILE *txtFile);

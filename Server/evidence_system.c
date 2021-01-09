@@ -40,6 +40,13 @@ bool esAddEntry(EVIDENCE_SYSTEM* es, char* buffer) {
     return tableAddEntry(es->table, buffer);
 }
 
+bool esRemoveEntry(EVIDENCE_SYSTEM* es, const int indexEntry) {
+    if (es->table == NULL) {
+        return false;
+    }
+    return tableRemoveEntry(es->table, indexEntry);
+}
+
 bool esGetTableEntry(const EVIDENCE_SYSTEM* es, const int indexEntry, char* buffer) {
     if (es->table == NULL) {
         return false;
@@ -47,19 +54,12 @@ bool esGetTableEntry(const EVIDENCE_SYSTEM* es, const int indexEntry, char* buff
     return tableGetEntry(es->table, indexEntry, buffer);
 }
 
-void esPrintTable(const EVIDENCE_SYSTEM* es) {
-    tablePrint(es->table);
-}
-
 bool esGetStringTableEntry(const EVIDENCE_SYSTEM* es, const char* str, char* buffer) {
     if (es->table == NULL) {
         return false;
     }
-    return tableGetStringEntry(es->table, str, buffer);
-}
 
-void esPrintStringTable(const EVIDENCE_SYSTEM* es, char* str) {
-    tableStringPrint(es->table, str);
+    return tableGetStringEntry(es->table, str, buffer);
 }
 
 bool esSortTable(EVIDENCE_SYSTEM* es, const int indexColumn, const bool ascending) {

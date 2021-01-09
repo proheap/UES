@@ -2,68 +2,93 @@
 
 void columnInit (COLUMN* column, const enum type_tag type) {
     column->entry = (LINKED_LIST*) malloc(sizeof(LINKED_LIST));
+    llInit(column->entry);
     column->type = type;
 }
 
 void columnDispose(COLUMN* column) {
     llDispose(column->entry);
+    free(column->entry);
     column->entry = NULL;
     column->type = 0;
 }
 
-void columnAddEntry(COLUMN* column, void* data) {
-    int entryInt;
-    double entryDouble;
-    char* entryString;
-    char* tmp;
-    bool entryBool;
+void columnAddEntry(COLUMN* column, const void* data) {
+    int dataInt;
+    double dataDouble;
+    char dataString[DATA_SIZE] = "";
+    bool dataBool;
     switch (column->type) {
         case INT_TYPE:
-            entryInt = atoi((char*)data);
-            llAdd(column->entry, &entryInt, column->type);
+            dataInt = atoi((char*)data);
+            llAdd(column->entry, &dataInt, column->type);
             break;
         case DOUBLE_TYPE:
-            entryDouble = strtod((char*)data, &tmp);
-            llAdd(column->entry, &entryDouble, column->type);
+            dataDouble = strtod((char*)data, NULL);
+            llAdd(column->entry, &dataDouble, column->type);
             break;
         case STRING_TYPE:
-            strncpy(entryString, (char*)data, DATA_SIZE);
-            llAdd(column->entry, entryString, column->type);
+            strncpy(dataString, (char*)data, DATA_SIZE);
+            llAdd(column->entry, dataString, column->type);
             break;
         case BOOL_TYPE:
             if(*(char*)data == '0') {
-                entryBool = false;
+                dataBool = false;
             } else {
-                entryBool = true;
+                dataBool = true;
             }
-            llAdd(column->entry, &entryBool, column->type);
+            llAdd(column->entry, &dataBool, column->type);
             break;
     }
 }
 
-bool columnGetEntry(const COLUMN* column, const int indexEntry, void* data) {
+bool columnRemoveEntry(COLUMN* column, const int indexEntry) {
+    return llTryRemove(column->entry, indexEntry);
+}
+
+bool columnGetEntry(const COLUMN* column, const int indexEntry, void** data) {
     return llTryGet(column->entry, indexEntry, data);
 }
 
-void columnPrintData(const COLUMN* column, const int indexEntry) {
-    void* data;
-    llTryGet(column->entry, indexEntry, data);
-    itemPrintData(data, column->type);
+static void itoa(char* str, int num) {
+    int i, rem, len = 0, n;
+
+    n = num;
+    while (n != 0)
+    {
+        len++;
+        n /= 10;
+    }
+    for (i = 0; i < len; i++)
+    {
+        rem = num % 10;
+        num = num / 10;
+        str[len - (i + 1)] = rem + '0';
+    }
+    str[len] = '\0';
 }
 
-void columnPrintType(const COLUMN* column) {
+void columnGetDataString(const COLUMN* column, const void* data, char* strData) {
+    int* dataInt;
+    double* dataDouble;
+    char* dataString;
+    bool* dataBool;
     switch (column->type) {
         case INT_TYPE:
-            printf("[INT] ");
+            dataInt = (int*)data;
+            itoa(strData, *dataInt);
             break;
         case DOUBLE_TYPE:
-            printf("[DOUBLE] ");
+            dataDouble = (double*)data;
+            sprintf(strData, "%.2lf", *dataDouble);
             break;
         case STRING_TYPE:
-            printf("[STRING] ");
+            dataString = (char*)data;
+            strncpy(strData, dataString, DATA_SIZE);
             break;
         case BOOL_TYPE:
-            printf("[BOOLEAN] ");
+            dataBool = (bool*)data;
+            *strData = *dataBool + '0';
             break;
     }
 }

@@ -31,6 +31,7 @@ static void printMenu() {
     printf("5. Vypisat zaznamy tabulky\n");
     printf("6. Vypisat zaznamy tabulky obsahujuce retazec\n");
     printf("7. Utriedit tabulku podla stlpca\n");
+    printf("----------------------------\n");
     printf("0. Exit\n");
 }
 
@@ -59,7 +60,7 @@ static void menuCreateTable(char* buffer) {
 
 static void menuRemoveTable(char* buffer) {
     int input;
-    strncpy(buffer, "\0", strlen(buffer));
+    strncpy(buffer, "\0", BUFFER_LENGTH);
     printf("ODSTRANENIE TABULKY\n");
     printf("-------------------\n");
     printf("Naozaj chcete odstranit tabulku? (0 - NIE, 1 - ANO)\n");
@@ -109,7 +110,7 @@ void printColumnsType(char* buffer) {
 }
 
 static void menuAddEntry(char* buffer) {
-    strncpy(buffer, "3", strlen(buffer));
+    strncpy(buffer, "3", BUFFER_LENGTH);
     if (stateReading == BEFORE) {
         *(buffer + 1) = '0';
         *(buffer + 2) = '\0';
@@ -120,7 +121,7 @@ static void menuAddEntry(char* buffer) {
         *(buffer + 1) = '1';
         *(buffer + 2) = ':';
         char entry[INPUT_SIZE];
-        readStringInput(&entry);
+        readStringInput(entry);
         strcat(buffer, entry);
         stateReading = BEFORE;
         stateMenu = START;
@@ -145,6 +146,7 @@ static void menuRemoveEntry(char* buffer) {
         reading = true;
     } else {
         *(buffer + 1) = '1';
+        printf("-----------------------------\n");
         printf("Zadajte ID zaznamu, Ktorý chcete z tabulky odstranit:\n");
         int indexEntry = readIntegerInput();
         *(buffer + 2) = indexEntry + '0';
@@ -152,11 +154,10 @@ static void menuRemoveEntry(char* buffer) {
         stateReading = BEFORE;
         stateMenu = START;
     }
-
 }
 
 static void menuPrintTable(char* buffer) {
-    strncpy(buffer, "\0", strlen(buffer));
+    strncpy(buffer, "\0", BUFFER_LENGTH);
     if (stateReading == BEFORE) {
         *buffer = '5';
         printf("VYPISANIE ZAZNAMOV TABULKY\n");
@@ -175,15 +176,17 @@ static void menuPrintTable(char* buffer) {
 }
 
 static void menuPrintTableString(char* buffer) {
-    *buffer = '\0';
+    strncpy(buffer, "\0", BUFFER_LENGTH);
     if (stateReading == BEFORE) {
         char input[INPUT_SIZE];
         *buffer = '6';
+        strcat(buffer, ":");
         printf("VYPISANIE ZAZNAMOV TABULKY OBSAHUJUCE RETAZEC\n");
         printf("---------------------------------------------\n");
         printf("Zadajte hladany retazec:\n");
         readStringInput(input);
         strcat(buffer, input);
+        printf("---------------------------------------------\n");
         reading = true;
     } else {
         int input;
@@ -198,9 +201,8 @@ static void menuPrintTableString(char* buffer) {
 }
 
 static void menuSortTable(char* buffer) {
-    *buffer = '6';
+    *buffer = '7';
     if (stateReading == BEFORE) {
-        char input[INPUT_SIZE];
         *(buffer + 1) = '0';
         *(buffer + 2) = '\0';
         printf("UTRIEDENIE TABULKY\n");
@@ -247,6 +249,7 @@ int menu(char* buffer) {
         } else if (strncmp(input, "7", INPUT_SIZE) == 0) {
             stateMenu = SORT_TABLE;
         } else if (strncmp(input, "0", INPUT_SIZE) == 0) {
+            *buffer = '0';
             return 0;
         }
     }

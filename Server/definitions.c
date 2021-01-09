@@ -35,7 +35,7 @@ int data_isStopped(DATA* data) {
 }
 
 static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
-    char bufferSending[BUFFER_LENGTH + 1];
+    char findString[DATA_SIZE];
     switch (*buffer) {
         case '1':
             esCreateTable(es, *(buffer + 1) - '0', buffer);
@@ -45,14 +45,27 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
             break;
         case '3':
             if(*(buffer + 1) == '0') {
-                esGetColumnsType(es, bufferSending);
-                data_writeData(data, bufferSending);
+                if (es->table == NULL) {
+                    strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
+                } else {
+                    esGetColumnsType(es, buffer);
+                }
+                data_writeData(data, buffer);
             } else {
                 esAddEntry(es, buffer);
             }
             break;
         case '4':
-            break;
+            if (*(buffer + 1) == '1') {
+                int indexEntry = *(buffer + 2) - '0';
+                esRemoveEntry(es, indexEntry);
+                break;
+            }
+        case '7':
+            if (*(buffer + 1) == '1') {
+                esSortTable(es, *(buffer + 1), *(buffer + 2));
+                break;
+            }
         case '5':
             for (int i = 0; i < es->table->countEntries; i++) {
                 if (i != es->table->countEntries - 1) {
@@ -60,17 +73,26 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
                 } else {
                     strncpy(buffer,"1", BUFFER_LENGTH);
                 }
-                esGetTableEntry(es, i, bufferSending);
-                data_writeData(data, bufferSending);
+                esGetTableEntry(es, i, buffer);
+                data_writeData(data, buffer);
             }
-            //esPrintTable(es);
+            if (es->table == NULL) {
+                strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
+                data_writeData(data, buffer);
+            } else if (es->table->countEntries == 0) {
+                strncpy(buffer,"Tabulka je prazdna!", BUFFER_LENGTH);
+                data_writeData(data, buffer);
+            }
             break;
         case '6':
-            esGetStringTableEntry(es, buffer + 1, bufferSending);
-            esPrintStringTable(es, buffer + 1);
+            strncpy(findString, buffer + 2, DATA_SIZE);
+            strncpy(buffer, "61:", strlen(buffer));
+            esGetStringTableEntry(es, findString, buffer);
+            data_writeData(data, buffer);
             break;
-        case '7':
-            esSortTable(es, *(buffer + 1), *(buffer + 2));
+        case '0':
+            printf("Pouzivatel ukoncil komunikaciu.\n");
+            data_stop(data);
             break;
     }
 }
@@ -82,7 +104,7 @@ void* data_readData(void* data, EVIDENCE_SYSTEM* es) {
     while(!data_isStopped(pdata)) {
 		bzero(buffer, BUFFER_LENGTH);
 		if (read(pdata->socket, buffer, BUFFER_LENGTH) > 0) {
-		    printf("%s\n", buffer);
+		    printf("RECIEVED: %s\n", buffer);
 		    data_answer(data, buffer, es);
 		}
 		else {
@@ -95,6 +117,7 @@ void* data_readData(void* data, EVIDENCE_SYSTEM* es) {
 
 void* data_writeData(void* data, char* buffer) {
     DATA* pdata = (DATA *)data;
+    printf("SENDED: %s\n", buffer);
     write(pdata->socket, buffer, strlen(buffer) + 1);
 
     return NULL;

@@ -57,40 +57,41 @@ bool tableAddEntry(TABLE* table, char* buffer) {
     return true;
 }
 
+bool tableRemoveEntry(TABLE* table, int indexEntry) {
+    if (indexEntry < 0 || indexEntry >= table->countEntries) {
+        return false;
+    }
+    for (int c = 0; c < table->countColumns; c++) {
+        if (!columnRemoveEntry(table->columns[c], indexEntry)) {
+            return false;
+        }
+    }
+    table->countEntries--;
+    return true;
+}
+
 bool tableGetEntry(const TABLE* table, const int indexEntry, char* buffer) {
     if (indexEntry < 0 || indexEntry >= table->countEntries) {
         return false;
     }
 
-    void* data;
+    *(buffer + 1) = '[';
+    *(buffer + 2) = indexEntry + '0';
+    *(buffer + 3) = ']';
     for (int c = 0; c < table->countColumns; c++) {
-        columnGetEntry(table->columns[c], indexEntry, data);
-//        if (!columnGetEntry(table->columns[c], indexEntry, data)) {
-//            return false;
-//        }
-        strcat(buffer, (char*)data);
+        void* data;
+        if (!columnGetEntry(table->columns[c], indexEntry, &data)) {
+            return false;
+        }
+        char strData[DATA_SIZE] = "";
+        columnGetDataString(table->columns[c], data, strData);
+        strncpy(buffer + strlen(buffer), strData, strlen(strData));
         if(c != table->countColumns - 1) {
             strcat(buffer, ":");
-        } else {
-            strcat(buffer, "\n");
         }
+        //free(data);
     }
     return true;
-}
-
-void tablePrint(const TABLE* table) {
-    printf("Zaznamy tabulky:\n");
-    printf("----------------\n");
-    for (int c = 0; c < table->countColumns; c++) {
-        columnPrintType(table->columns[c]);
-    }
-    printf("\n");
-    for (int i = 0; i < table->countEntries; i++) {
-        for (int c = 0; c < table->countColumns; c++) {
-            columnPrintData(table->columns[c], i);
-        }
-        printf("\n");
-    }
 }
 
 bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
@@ -101,10 +102,16 @@ bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
     for (int i = 0; i < table->countColumns; i++) {
         if(table->columns[i]->type == STRING_TYPE) {
             for (int j = 0; j < table->countEntries; j++) {
-                columnGetEntry(table->columns[i], j, data);
+                columnGetEntry(table->columns[i], j, &data);
                 if (itemCompareData(data, str, STRING_TYPE) == 0) {
+                    *(buffer + strlen(buffer)) = '[';
+                    *(buffer + strlen(buffer)) = j + '0';
+                    *(buffer + strlen(buffer)) = ']';
                     for (int c = 0; c < table->countColumns; c++) {
-                        strcat(buffer, (char*)data);
+                        char strData[STRING_SIZE] = "";
+                        columnGetEntry(table->columns[c], j, &data);
+                        columnGetDataString(table->columns[c], data, strData);
+                        strncat(buffer, strData, strlen((char*)strData));
                         if(c != table->countColumns - 1) {
                             strcat(buffer, ":");
                         } else {
@@ -115,25 +122,8 @@ bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
             }
         }
     }
+    *(buffer + strlen(buffer) - 1) = '\0';
     return true;
-}
-
-void tableStringPrint(const TABLE* table, char* str) {
-    void* data;
-    printf("Tabulka obsahujúca retazec %s:\n", str);
-    printf("------------------------------------------\n");
-    for (int i = 0; i < table->countColumns; i++) {
-        if(table->columns[i]->type == STRING_TYPE) {
-            for (int j = 0; j < table->countEntries; j++) {
-                columnGetEntry(table->columns[i], j, data);
-                if (itemCompareData(data, str, STRING_TYPE) == 0) {
-                    for (int c = 0; c < table->countColumns; c++) {
-                        columnPrintData(table->columns[c], j);
-                    }
-                }
-            }
-        }
-    }
 }
 
 bool tableSort(TABLE* table, const int indexColumn, const bool ascending) {

@@ -40,7 +40,7 @@ static void data_answer(char* buffer) {
             printColumnsType(buffer);
             break;
         default:
-            printTable(buffer, *buffer - '0');
+            printTable(buffer + 2, *buffer - '0');
     }
 }
 
@@ -52,7 +52,6 @@ void* data_readData(void* data) {
     while(!data_isStopped(pdata)) {
 		bzero(buffer, BUFFER_LENGTH);
 		if (read(pdata->socket, buffer, BUFFER_LENGTH) > 0) {
-            printf("%s\n", buffer);
             data_answer(buffer);
 		}
 		else {
@@ -69,11 +68,13 @@ void* data_writeData(void* data) {
     buffer[BUFFER_LENGTH] = '\0';
 
     while(!data_isStopped(pdata)) {
-        while (menu(buffer) == 1) {
+        while (menu(buffer)) {
             if (*buffer != '\0') {
                 write(pdata->socket, buffer, strlen(buffer) + 1);
             }
         }
+        write(pdata->socket, buffer, strlen(buffer) + 1);
+        printf("Koniec komunikacie.\n");
         data_stop(pdata);
     }
 	

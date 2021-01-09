@@ -13,11 +13,9 @@ bool esCreateTable(EVIDENCE_SYSTEM* es, const int countColumns, char* buffer);
 bool esRemoveTable(EVIDENCE_SYSTEM* es);
 bool esGetColumnsType(const EVIDENCE_SYSTEM* es, char* buffer);
 bool esAddEntry(EVIDENCE_SYSTEM* es, char* buffer);
-bool esRemoveEntry(EVIDENCE_SYSTEM* es, int indexEntry);
+bool esRemoveEntry(EVIDENCE_SYSTEM* es, const int indexEntry);
 bool esGetTableEntry(const EVIDENCE_SYSTEM* es, const int indexEntry, char* buffer);
-void esPrintTable(const EVIDENCE_SYSTEM* es);
 bool esGetStringTableEntry(const EVIDENCE_SYSTEM* es, const char* str, char* buffer);
-void esPrintStringTable(const EVIDENCE_SYSTEM* es, char* str);
 bool esSortTable(EVIDENCE_SYSTEM* es, const int indexColumn, const bool ascending);
 
 #endif //SERVER_EVIDENCE_SYSTEM_H

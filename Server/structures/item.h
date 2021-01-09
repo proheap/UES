@@ -22,11 +22,12 @@ typedef struct item {
     struct item* prev;
 } ITEM;
 
-void itemAddData(ITEM *item, void *data);
+size_t getDataTypeSize(const enum type_tag type, const void* data);
+void itemAddData(ITEM *item, const void *data);
 void itemDeleteData(ITEM *item);
-void itemCopy(const ITEM *src, ITEM *dest, const enum type_tag type);
+void itemCopy(ITEM *dest, const ITEM *src, const enum type_tag type);
 void itemSetData(ITEM *item, const void *data, const enum type_tag type);
-void* itemGetData(const ITEM *item, void *data);
+void* itemGetData(const ITEM *item, void **data);
 int itemCompareData(const void *data1, const void *data2, const enum type_tag type);
 int itemCompare(const ITEM *item1, const ITEM *item2);
 void itemPrintData(const void *data, const enum type_tag type);

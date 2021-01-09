@@ -1,8 +1,8 @@
 #include "item.h"
 
-static size_t getDataTypeSize(const ITEM *item) {
+size_t getDataTypeSize(const enum type_tag type,  const void* data) {
     size_t dataSize;
-    switch (item->type) {
+    switch (type) {
         case INT_TYPE:
             dataSize = sizeof(int);
             break;
@@ -10,7 +10,7 @@ static size_t getDataTypeSize(const ITEM *item) {
             dataSize = sizeof(double);
             break;
         case STRING_TYPE:
-            dataSize = strlen((char *) item->data) * sizeof(char);
+            dataSize = strlen((char*)data) * sizeof(char);
             break;
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);
@@ -19,35 +19,35 @@ static size_t getDataTypeSize(const ITEM *item) {
     return dataSize;
 }
 
-void itemAddData(ITEM *item, void *data) {
-    size_t dataSize = getDataTypeSize(item);
-    item->data = calloc(1 , dataSize);
+void itemAddData(ITEM *item, const void *data) {
+    size_t dataSize = getDataTypeSize(item->type, data);
+    item->data = (void*)malloc(dataSize);
 
     memcpy(item->data, data, dataSize);
 }
 
-void itemCopy(const ITEM *src, ITEM *dest, const enum type_tag type) {
+void itemCopy(ITEM *dest, const ITEM *src, const enum type_tag type) {
     dest->type = type;
-    size_t dataSize = getDataTypeSize(src);
-    dest->data = calloc(1 , dataSize);
+    size_t dataSize = getDataTypeSize(type, src->data);
+    dest->data = malloc(dataSize);
 
     memcpy(dest->data, src->data, dataSize);
 }
 
 void itemSetData(ITEM* item, const void *data, const enum type_tag type) {
     item->type = type;
-    size_t dataSize = getDataTypeSize(item);
+    size_t dataSize = getDataTypeSize(type, data);
     item->data = realloc(item->data, dataSize);
 
     memcpy(item->data, data, dataSize);
 }
 
-void* itemGetData(const ITEM *item, void *data) {
-    size_t dataSize = getDataTypeSize(item);
-    data = calloc(1 , dataSize);
+void* itemGetData(const ITEM *item, void** data) {
+    size_t dataSize = getDataTypeSize(item->type, item->data);
+    *data = (void*)malloc(dataSize);
 
-    memcpy(data, item->data, dataSize);
-    return data;
+    memcpy(*data, item->data, dataSize);
+    return *data;
 }
 
 int itemCompareData(const void *data1, const void *data2, const enum type_tag type){
@@ -69,7 +69,7 @@ int itemCompareData(const void *data1, const void *data2, const enum type_tag ty
                 return 0;
             }
         case STRING_TYPE:
-                return strcmp((char*)data1, (char*) data2);
+            return memcmp(data1, data2, strlen((char*)data1));
         case BOOL_TYPE:
             if (*((_Bool*)data1) > *((_Bool*)data2)) {
                 return 1;
@@ -91,6 +91,7 @@ int itemCompare(const ITEM *item1, const ITEM *item2) {
 
 void itemDeleteData(ITEM *item) {
     free(item->data);
+    item->data = NULL;
 }
 
 void itemPrintData(const void *data, const enum type_tag type) {
