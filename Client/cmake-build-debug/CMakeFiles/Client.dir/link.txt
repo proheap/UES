@@ -1,1 +1,0 @@
-/usr/bin/cc -g   CMakeFiles/Client.dir/client.c.o CMakeFiles/Client.dir/definitions.c.o CMakeFiles/Client.dir/menu.c.o  -o Client -lpthread 

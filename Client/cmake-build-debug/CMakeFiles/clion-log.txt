@@ -1,4 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/c/Users/Martin/Documents/CLion Projects/UES/Client"
--- Configuring done
--- Generating done
--- Build files have been written to: /c/Users/Martin/Documents/CLion Projects/UES/Client/cmake-build-debug
