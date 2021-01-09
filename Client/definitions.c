@@ -37,10 +37,13 @@ int data_isStopped(DATA* data) {
 static void data_answer(char* buffer) {
     switch (*buffer) {
         case '3':
-            printColumnsType(buffer);
+            printColumnsTypeEntry(buffer);
+            break;
+        case '5':
+            printTableHead(buffer);
             break;
         default:
-            printTable(buffer + 2, *buffer - '0');
+            printTable(buffer, *buffer - '0');
     }
 }
 
@@ -71,6 +74,7 @@ void* data_writeData(void* data) {
         while (menu(buffer)) {
             if (*buffer != '\0') {
                 write(pdata->socket, buffer, strlen(buffer) + 1);
+                strncpy(buffer, "\0", BUFFER_LENGTH);
             }
         }
         write(pdata->socket, buffer, strlen(buffer) + 1);

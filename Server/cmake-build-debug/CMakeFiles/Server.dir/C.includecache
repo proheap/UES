@@ -6,11 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/constants.h
 
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/constants.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/item.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.h
 stdio.h
 -
 stdlib.h
@@ -18,9 +16,13 @@ stdlib.h
 string.h
 -
 constants.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/constants.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/constants.h
 
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/linked_list.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.c
+linked_list.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.h
+
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/linked_list.h
 stdio.h
 -
 stdlib.h
@@ -28,23 +30,5 @@ stdlib.h
 stdbool.h
 -
 item.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/item.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/column.h
-stdlib.h
--
-./structures/linked_list.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/./structures/linked_list.h
-../CMemLeak.h
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/table.c
-table.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
-
-/c/Users/Martin/Documents/CLion Projects/UES/Server/table.h
-column.h
-/c/Users/Martin/Documents/CLion Projects/UES/Server/column.h
-../CMemLeak.h
-/c/Users/Martin/Documents/CLion Projects/UES/CMemLeak.h
+/c/Users/Martin/Documents/CLion Projects/UES/Server/structures/item.h
 

@@ -18,18 +18,20 @@ void llDispose(LINKED_LIST *list) {
         list->first->next = NULL;
         list->first = curStart;
 
-        curEnd = curEnd->prev;
-        itemDeleteData(list->last);
-        free(list->last);
-        list->last->next = NULL;
-        list->last->prev = NULL;
-        list->last = curEnd;
-        list->size -= 2;
         if (curStart == curEnd) {
             list->first->next = NULL;
             list->first->prev = NULL;
             list->size--;
             break;
+        }
+        if (list->first != list->last) {
+            curEnd = curEnd->prev;
+            itemDeleteData(list->last);
+            free(list->last);
+            list->last->next = NULL;
+            list->last->prev = NULL;
+            list->last = curEnd;
+            list->size -= 2;
         }
     }
 

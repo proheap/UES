@@ -16,7 +16,8 @@ void columnDispose(COLUMN* column) {
 void columnAddEntry(COLUMN* column, const void* data) {
     int dataInt;
     double dataDouble;
-    char dataString[DATA_SIZE] = "";
+    int dataStringSize = strlen((char*)data) + 1;
+    char dataString[dataStringSize];
     bool dataBool;
     switch (column->type) {
         case INT_TYPE:
@@ -28,7 +29,7 @@ void columnAddEntry(COLUMN* column, const void* data) {
             llAdd(column->entry, &dataDouble, column->type);
             break;
         case STRING_TYPE:
-            strncpy(dataString, (char*)data, DATA_SIZE);
+            strncpy(dataString, (char*)data, dataStringSize);
             llAdd(column->entry, dataString, column->type);
             break;
         case BOOL_TYPE:
@@ -84,7 +85,7 @@ void columnGetDataString(const COLUMN* column, const void* data, char* strData) 
             break;
         case STRING_TYPE:
             dataString = (char*)data;
-            strncpy(strData, dataString, DATA_SIZE);
+            strncpy(strData, dataString, strlen(dataString));
             break;
         case BOOL_TYPE:
             dataBool = (bool*)data;

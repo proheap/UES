@@ -10,7 +10,7 @@ size_t getDataTypeSize(const enum type_tag type,  const void* data) {
             dataSize = sizeof(double);
             break;
         case STRING_TYPE:
-            dataSize = strlen((char*)data) * sizeof(char);
+            dataSize = strlen((char*)data) + sizeof(char);
             break;
         case BOOL_TYPE:
             dataSize = sizeof(_Bool);

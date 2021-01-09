@@ -29,7 +29,6 @@ bool esGetColumnsType(const EVIDENCE_SYSTEM* es, char* buffer) {
     if (es->table == NULL) {
         return false;
     }
-    *buffer = '3';
     return tableGetColumnsType(es->table, buffer);
 }
 

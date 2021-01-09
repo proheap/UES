@@ -48,6 +48,7 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
                 if (es->table == NULL) {
                     strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
                 } else {
+                    *buffer = '3';
                     esGetColumnsType(es, buffer);
                 }
                 data_writeData(data, buffer);
@@ -63,25 +64,30 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
             }
         case '7':
             if (*(buffer + 1) == '1') {
-                esSortTable(es, *(buffer + 1), *(buffer + 2));
+                esSortTable(es, *(buffer + 2) - '0', *(buffer + 3) - '0');
                 break;
             }
         case '5':
-            for (int i = 0; i < es->table->countEntries; i++) {
-                if (i != es->table->countEntries - 1) {
-                    strncpy(buffer,"0", BUFFER_LENGTH);
-                } else {
-                    strncpy(buffer,"1", BUFFER_LENGTH);
-                }
-                esGetTableEntry(es, i, buffer);
-                data_writeData(data, buffer);
-            }
+            *buffer = '5';
             if (es->table == NULL) {
                 strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
                 data_writeData(data, buffer);
             } else if (es->table->countEntries == 0) {
                 strncpy(buffer,"Tabulka je prazdna!", BUFFER_LENGTH);
                 data_writeData(data, buffer);
+            } else {
+                esGetColumnsType(es, buffer);
+                data_writeData(data, buffer);
+                for (int i = 0; i < es->table->countEntries; i++) {
+                    if (i != es->table->countEntries - 1) {
+                        strncpy(buffer,"0", BUFFER_LENGTH);
+                    } else {
+                        strncpy(buffer,"1", BUFFER_LENGTH);
+                    }
+                    esGetTableEntry(es, i, buffer);
+                    data_writeData(data, buffer);
+                    sleep(0.2);
+                }
             }
             break;
         case '6':
@@ -92,6 +98,7 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
             break;
         case '0':
             printf("Pouzivatel ukoncil komunikaciu.\n");
+            esRemoveTable(es);
             data_stop(data);
             break;
     }

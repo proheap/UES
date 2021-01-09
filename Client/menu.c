@@ -73,31 +73,31 @@ static void menuRemoveTable(char* buffer) {
     }
 }
 
-static void findColumnType(const char typeTag, char* strType) {
+static void findColumnType(const char typeTag, char* type) {
     switch (typeTag) {
         case '0':
-            strncpy(strType, "INT", TYPE_SIZE);
+            strncpy(type, "INT", TYPE_SIZE);
             break;
         case '1':
-            strncpy(strType, "DOUBLE", TYPE_SIZE);
+            strncpy(type, "DOUBLE", TYPE_SIZE);
             break;
         case '2':
-            strncpy(strType, "STRING", TYPE_SIZE);
+            strncpy(type, "STRING", TYPE_SIZE);
             break;
         case '3':
-            strncpy(strType, "BOOLEAN", TYPE_SIZE);
+            strncpy(type, "BOOLEAN", TYPE_SIZE);
             break;
     }
 }
 
-void printColumnsType(char* buffer) {
+void printColumnsTypeEntry(char* buffer) {
     int countColumns = *(buffer + 1) - '0';
     char bufferTypes[strlen(buffer)];
     strncpy(bufferTypes, buffer + 2, strlen(buffer));
-    char type[TYPE_SIZE];
 
     printf("Zadajte zaznam v tvare: ");
     for (int i = 0; i < countColumns; i++) {
+        char type[TYPE_SIZE] = "";
         findColumnType(*(bufferTypes + i), type);
         if (i != countColumns - 1) {
             printf("%s:", type);
@@ -128,8 +128,24 @@ static void menuAddEntry(char* buffer) {
     }
 }
 
+void printTableHead(char* buffer) {
+    printf("[ID]");
+    int countColumns = *(buffer + 1) - '0';
+    char* bufferTypes = buffer + 2;
+    for (int i = 0; i < countColumns; i++) {
+        char type[TYPE_SIZE] = "";
+        findColumnType(*(bufferTypes + i), type);
+        if (i != countColumns - 1) {
+            printf("%s:", type);
+        } else {
+            printf("%s\n", type);
+        }
+    }
+}
+
 void printTable(char* buffer, const bool lastEntry) {
-    printf("%s\n", buffer + 1);
+    char* tableEntry = buffer + 1;
+    printf("%s\n", tableEntry);
     if (lastEntry) {
         reading = false;
         stateReading = AFTER;
@@ -207,12 +223,13 @@ static void menuSortTable(char* buffer) {
         *(buffer + 2) = '\0';
         printf("UTRIEDENIE TABULKY\n");
         printf("------------------\n");
+        reading = true;
     } else {
         *(buffer + 1) = '1';
         int indexColumn;
         int ascending;
         printf("------------------\n");
-        printf("Zadajte cislo stlpca, podla ktoreho chcete zoradit tabulku:\n");
+        printf("Zadajte cislo stlpca, podla ktoreho chcete zoradit tabulku (INDEXUJE SA OD 0):\n");
         indexColumn = readIntegerInput();
         printf("Zadajte sposob zoradenia tabulky (0 - ZOSTUPNE, 1 - VZOSTUPNE):\n");
         do {
@@ -220,7 +237,7 @@ static void menuSortTable(char* buffer) {
         } while (ascending != 1 && ascending != 0);
 
         *(buffer + 2) = indexColumn + '0';
-        *(buffer + 3) = ascending + '1';
+        *(buffer + 3) = ascending + '0';
         *(buffer + 4) = '\0';
         stateReading = BEFORE;
         stateMenu = START;

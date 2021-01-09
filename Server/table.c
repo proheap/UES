@@ -89,7 +89,7 @@ bool tableGetEntry(const TABLE* table, const int indexEntry, char* buffer) {
         if(c != table->countColumns - 1) {
             strcat(buffer, ":");
         }
-        //free(data);
+        free(data);
     }
     return true;
 }
@@ -98,15 +98,16 @@ bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
     if (strcmp(str, "") == 0) {
         return false;
     }
-    void* data;
     for (int i = 0; i < table->countColumns; i++) {
         if(table->columns[i]->type == STRING_TYPE) {
             for (int j = 0; j < table->countEntries; j++) {
+                void* data;
                 columnGetEntry(table->columns[i], j, &data);
                 if (itemCompareData(data, str, STRING_TYPE) == 0) {
                     *(buffer + strlen(buffer)) = '[';
                     *(buffer + strlen(buffer)) = j + '0';
                     *(buffer + strlen(buffer)) = ']';
+                    free(data);
                     for (int c = 0; c < table->countColumns; c++) {
                         char strData[STRING_SIZE] = "";
                         columnGetEntry(table->columns[c], j, &data);
@@ -117,6 +118,7 @@ bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
                         } else {
                             strcat(buffer, "\n");
                         }
+                        free(data);
                     }
                 }
             }
@@ -132,11 +134,12 @@ bool tableSort(TABLE* table, const int indexColumn, const bool ascending) {
     }
 
     COLUMN* sortingColumn = table->columns[indexColumn];
-    for (int i = 0; i < table->countEntries; i++) {
-        for (int j = i; j < table->countEntries; j++) {
-            void *data1, *data2;
-            llTryGet(sortingColumn->entry, i, data1);
-            llTryGet(sortingColumn->entry, j, data2);
+    for (int i = 0; i < table->countEntries - 1; i++) {
+        for (int j = i + 1; j < table->countEntries; j++) {
+            void *data1;
+            columnGetEntry(sortingColumn, i, &data1);
+            void *data2;
+            columnGetEntry(sortingColumn, j, &data2);
             if(ascending) {
                 if (itemCompareData(data1, data2, sortingColumn->type) > 0) {
                     for (int c = 0; c < table->countColumns; c++) {
@@ -150,6 +153,8 @@ bool tableSort(TABLE* table, const int indexColumn, const bool ascending) {
                     }
                 }
             }
+            free(data1);
+            free(data2);
         }
     }
     return true;
