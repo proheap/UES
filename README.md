@@ -1,4 +1,4 @@
-## UES
+# UES
 Universal evidence system in C
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -11,12 +11,12 @@ Universal evidence system in C
 ----------------------------------------------------------------------------------------------------------------------------------
 ### ASSIGNMENT
 One table stored on server, client works with table on local computer. Client can:
-- creating / removing table
+- create / remove table
 - define structure table (column can be string, int, double or boolean data type)
-- adding / removing entry
-- prinitng all table entries
-- printing all table entries, which contains some string
-- sorting table by some column
+- add / remove entry
+- print all table entries
+- print all table entries, which contains some string
+- sort table by some column
 
 ----------------------------------------------------------------------------------------------------------------------------------
 ### RUNNING APLICATION
