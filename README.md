@@ -26,3 +26,5 @@ One table stored on server, client works with table on local computer. Client ca
 	./Server/server 10000 server
 ## Running client:
 	./Client/client localhost 10000 client
+	
+----------------------------------------------------------------------------------------------------------------------------------
