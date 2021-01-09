@@ -1,15 +1,28 @@
-Aplikacia sluzi na (asynchronnu) vymenu textovych sprav medzi dvomi pouzivatelmi.
-Asynchronnost je zabezpecena vyuzitim vlakien a funkcie select.
+### UdSP_UES
+Universal evidence system in C
 
-Preklad servera:
-	gcc k_a_t_definitions.c k_a_t_server.c -o k_a_t_server -pthread
-Preklad klienta:
-	gcc k_a_t_definitions.c k_a_t_client.c -o k_a_t_client -pthread
+----------------------------------------------------------------------------------------------------------------------------------
+### Author
+- Martin Mišík
 
-Spustenie servera:
-	./k_s_server 10000 server
-Spustenie klienta:
-	./k_s_client localhost 10000 klient
-	
-Ukoncenie aplikacie:
-	klient alebo server zada spravu ":end"
+----------------------------------------------------------------------------------------------------------------------------------
+### ASSIGNMENT
+One table stored on server, client works with table on local computer. Client can:
+- creating / removing table
+- define structure table (column can be string, int, double or boolean data type)
+- adding / removing entry
+- prinitng all table entries
+- printing all table entries, which contains some string
+- sorting table by some column
+
+----------------------------------------------------------------------------------------------------------------------------------
+### RUNNING APLICATION
+## Server translation:
+    gcc Server/server.c Server/definitions.c Server/evidence_system.c Server/table.c Server/column.c /Server/structures/linked_list.c /Server/structures/item.c -o server -pthread
+## Client translation:
+	gcc Client/client.c Client/definitions.c Client/menu.c -o client -pthread
+
+## Running server:
+	./Server/server 10000 server
+## Running client:
+	./Client/client localhost 10000 client

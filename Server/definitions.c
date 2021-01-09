@@ -92,7 +92,7 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
             break;
         case '6':
             strncpy(findString, buffer + 2, DATA_SIZE);
-            strncpy(buffer, "61:", strlen(buffer));
+            strncpy(buffer, "1", strlen(buffer));
             esGetStringTableEntry(es, findString, buffer);
             data_writeData(data, buffer);
             break;

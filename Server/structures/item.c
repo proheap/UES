@@ -50,7 +50,17 @@ void* itemGetData(const ITEM *item, void** data) {
     return *data;
 }
 
+static void itemStringToLower(char* string, char* lowerString) {
+    int i = 0;
+    while (*(string + i) != '\0') {
+        *(lowerString + i) = tolower(*(string + i));
+        i++;
+    }
+}
+
 int itemCompareData(const void *data1, const void *data2, const enum type_tag type){
+    char lowerStringData1[STRING_SIZE] = "";
+    char lowerStringData2[STRING_SIZE] = "";
     switch (type) {
         case INT_TYPE:
             if (*((int*)data1) > *((int*)data2)) {
@@ -69,7 +79,9 @@ int itemCompareData(const void *data1, const void *data2, const enum type_tag ty
                 return 0;
             }
         case STRING_TYPE:
-            return memcmp(data1, data2, strlen((char*)data1));
+            itemStringToLower((char*)data1, lowerStringData1);
+            itemStringToLower((char*)data2, lowerStringData2);
+            return strcmp(lowerStringData1, lowerStringData2);
         case BOOL_TYPE:
             if (*((_Bool*)data1) > *((_Bool*)data2)) {
                 return 1;
@@ -91,7 +103,6 @@ int itemCompare(const ITEM *item1, const ITEM *item2) {
 
 void itemDeleteData(ITEM *item) {
     free(item->data);
-    item->data = NULL;
 }
 
 void itemPrintData(const void *data, const enum type_tag type) {

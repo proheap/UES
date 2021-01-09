@@ -51,24 +51,6 @@ bool columnGetEntry(const COLUMN* column, const int indexEntry, void** data) {
     return llTryGet(column->entry, indexEntry, data);
 }
 
-static void itoa(char* str, int num) {
-    int i, rem, len = 0, n;
-
-    n = num;
-    while (n != 0)
-    {
-        len++;
-        n /= 10;
-    }
-    for (i = 0; i < len; i++)
-    {
-        rem = num % 10;
-        num = num / 10;
-        str[len - (i + 1)] = rem + '0';
-    }
-    str[len] = '\0';
-}
-
 void columnGetDataString(const COLUMN* column, const void* data, char* strData) {
     int* dataInt;
     double* dataDouble;
@@ -77,7 +59,7 @@ void columnGetDataString(const COLUMN* column, const void* data, char* strData) 
     switch (column->type) {
         case INT_TYPE:
             dataInt = (int*)data;
-            itoa(strData, *dataInt);
+            sprintf(strData, "%d", *dataInt);
             break;
         case DOUBLE_TYPE:
             dataDouble = (double*)data;

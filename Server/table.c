@@ -18,7 +18,7 @@ void tableDispose(TABLE* table) {
     table->countEntries = 0;
 }
 
-void tableAddColumns(TABLE* table, char* buffer) {
+void tableAddColumns(TABLE* table, const char* buffer) {
     for (int i = 0; i < table->countColumns; i++) {
         COLUMN* column;
         column = (COLUMN*) malloc(sizeof(COLUMN));
@@ -45,6 +45,9 @@ bool tableAddEntry(TABLE* table, char* buffer) {
         char data[DATA_SIZE] = "\0";
         if (c != table->countColumns - 1) {
             char *p2 = strchr(p1, ':');
+            if (p2 == NULL) {
+                return false;
+            }
             strncpy(data, p1, p2 - p1);
             columnAddEntry(table->columns[c], data);
             p1 = p2 + 1;
@@ -101,14 +104,14 @@ bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
     for (int i = 0; i < table->countColumns; i++) {
         if(table->columns[i]->type == STRING_TYPE) {
             for (int j = 0; j < table->countEntries; j++) {
-                void* data;
-                columnGetEntry(table->columns[i], j, &data);
-                if (itemCompareData(data, str, STRING_TYPE) == 0) {
+                void* dataString;
+                columnGetEntry(table->columns[i], j, &dataString);
+                if (itemCompareData(dataString, str, STRING_TYPE) == 0) {
                     *(buffer + strlen(buffer)) = '[';
                     *(buffer + strlen(buffer)) = j + '0';
                     *(buffer + strlen(buffer)) = ']';
-                    free(data);
                     for (int c = 0; c < table->countColumns; c++) {
+                        void* data;
                         char strData[STRING_SIZE] = "";
                         columnGetEntry(table->columns[c], j, &data);
                         columnGetDataString(table->columns[c], data, strData);
@@ -121,6 +124,7 @@ bool tableGetStringEntry (const TABLE* table, const char* str, char* buffer) {
                         free(data);
                     }
                 }
+                free(dataString);
             }
         }
     }
@@ -149,7 +153,7 @@ bool tableSort(TABLE* table, const int indexColumn, const bool ascending) {
             } else {
                 if (itemCompareData(data1, data2, sortingColumn->type) < 0) {
                     for (int c = 0; c < table->countColumns; c++) {
-                        columnSwapEntries(table->columns[c], j, i);
+                        columnSwapEntries(table->columns[c], i, j);
                     }
                 }
             }

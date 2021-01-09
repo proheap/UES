@@ -13,25 +13,22 @@ void llDispose(LINKED_LIST *list) {
     while (list->size != 0) {
         curStart = curStart->next;
         itemDeleteData(list->first);
-        free(list->first);
         list->first->prev = NULL;
         list->first->next = NULL;
-        list->first = curStart;
-
-        if (curStart == curEnd) {
-            list->first->next = NULL;
-            list->first->prev = NULL;
-            list->size--;
-            break;
+        free(list->first);
+        if (list->size != 1) {
+            list->first = curStart;
         }
+        list->size--;
+
         if (list->first != list->last) {
             curEnd = curEnd->prev;
             itemDeleteData(list->last);
-            free(list->last);
             list->last->next = NULL;
             list->last->prev = NULL;
+            free(list->last);
             list->last = curEnd;
-            list->size -= 2;
+            list->size--;
         }
     }
 
@@ -134,29 +131,53 @@ _Bool llTryGet(const LINKED_LIST *list, const int pos, void **data) {
     }
 }
 
-_Bool llTrySwap(LINKED_LIST *list, const int posItem1, const int posItem2) {
-    if (posItem1 >= 0 && posItem1 < list->size && posItem2 >= 0 && posItem2 < list->size) {
-        ITEM* item1 = getItemAtIndex(list, posItem1);
-        ITEM* prevItem1 = item1->prev;
-        ITEM* nextItem1 = item1->next;
-        ITEM* item2 = getItemAtIndex(list, posItem2);
-        ITEM* prevItem2 = item2->prev;
-        ITEM* nextItem2 = item2->next;
-
-        prevItem2->next = item1;
-        nextItem2->prev = item1;
-        item1->prev = prevItem2;
-        item1->next = nextItem2;
-
-        prevItem1->next = item2;
-        nextItem1->prev = item2;
-        item2->prev = prevItem1;
-        item2->next = nextItem1;
-
-        return true;
-    } else {
+_Bool llTrySwap(LINKED_LIST *list, int posItem1, int posItem2) {
+    if (posItem1 < 0 && posItem1 >= list->size && posItem2 < 0 && posItem2 >= list->size && posItem1 == posItem2) {
         return false;
     }
+
+    ITEM* item1 = getItemAtIndex(list, posItem1);
+    ITEM* item2 = getItemAtIndex(list, posItem2);
+    if (posItem1 > posItem2) {
+        ITEM* tmpItem = item1;
+        item1 = item2;
+        item2 = tmpItem;
+    }
+    ITEM* prevItem1 = item1->prev;
+    ITEM* nextItem1 = item1->next;
+    ITEM* prevItem2 = item2->prev;
+    ITEM* nextItem2 = item2->next;
+
+    if (item1 == list->first) {
+        list->first = item2;
+    }
+    if (item2 == list->last) {
+        list->last = item1;
+    }
+
+    if (prevItem1 != NULL) {
+        prevItem1->next = item2;
+    }
+    if (nextItem1 != NULL) {
+        nextItem1->prev = item2;
+    }
+    if (prevItem2 != NULL) {
+        prevItem2->next = item1;
+    }
+    if (nextItem2 != NULL) {
+        nextItem2->prev = item1;
+    }
+    if (item1 == prevItem2) {
+        item1->prev = item2;
+        item2->next = item1;
+    } else {
+        item1->prev = prevItem2;
+        item2->next = nextItem1;
+    }
+    item1->next = nextItem2;
+    item2->prev = prevItem1;
+
+    return true;
 }
 
 bool llTryRemove(LINKED_LIST *list, const int pos) {

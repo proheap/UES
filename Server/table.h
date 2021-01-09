@@ -2,7 +2,6 @@
 #define SERVER_TABLE_H
 
 #include "column.h"
-#include "../CMemLeak.h"
 
 typedef struct table {
     int countColumns;
@@ -12,7 +11,7 @@ typedef struct table {
 
 void tableInit(TABLE* table, const int countColumns);
 void tableDispose(TABLE* table);
-void tableAddColumns(TABLE* table, char* buffer);
+void tableAddColumns(TABLE* table, const char* buffer);
 bool tableGetColumnsType(const TABLE* table, char* buffer);
 bool tableAddEntry(TABLE* table, char* buffer);
 bool tableRemoveEntry(TABLE* table, int indexEntry);

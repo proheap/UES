@@ -8,8 +8,6 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#include "../CMemLeak.h"
-
 int main(int argc, char* argv[]) {
     if (argc < 3) {
         printError("Sever je nutne spustit s nasledujucimi argumentmi: port pouzivatel.");

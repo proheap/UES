@@ -70,8 +70,9 @@ void* data_writeData(void* data) {
     char buffer[BUFFER_LENGTH + 1];
     buffer[BUFFER_LENGTH] = '\0';
 
+    int (*m)(char*) = menu;
     while(!data_isStopped(pdata)) {
-        while (menu(buffer)) {
+        while (m(buffer)) {
             if (*buffer != '\0') {
                 write(pdata->socket, buffer, strlen(buffer) + 1);
                 strncpy(buffer, "\0", BUFFER_LENGTH);
