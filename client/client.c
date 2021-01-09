@@ -9,8 +9,6 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#include "../CMemLeak.h"
-
 int main(int argc, char *argv[]) {
     if (argc < 4) {
         printError("Klienta je nutne spustit s nasledujucimi argumentmi: adresa port pouzivatel.");
