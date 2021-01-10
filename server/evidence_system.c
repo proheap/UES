@@ -62,5 +62,8 @@ bool esGetStringTableEntry(const EVIDENCE_SYSTEM* es, const char* str, char* buf
 }
 
 bool esSortTable(EVIDENCE_SYSTEM* es, const int indexColumn, const bool ascending) {
+    if (es->table == NULL) {
+        return false;
+    }
     return tableSort(es->table, indexColumn, ascending);
 }

@@ -16,6 +16,7 @@ extern STATE_MENU stateMenu;
 extern STATE_READING stateReading;
 extern bool reading;
 
+void printBuffer(char* buffer);
 void printColumnsTypeEntry(char* buffer);
 void printTableHead(char* buffer);
 void printTable(char* buffer, bool lastEntry);

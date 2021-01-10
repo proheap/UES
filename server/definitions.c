@@ -38,44 +38,70 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
     char findString[DATA_SIZE];
     switch (*buffer) {
         case '1':
-            esCreateTable(es, *(buffer + 1) - '0', buffer);
+            if (esCreateTable(es, *(buffer + 1) - '0', buffer)) {
+                strncpy(buffer,"Tabulka bola vytvorena!", BUFFER_LENGTH);
+            } else {
+                strncpy(buffer,"Tabulka uz je vytvorena!", BUFFER_LENGTH);
+            }
+            data_writeData(data, buffer);
             break;
         case '2':
-            esRemoveTable(es);
+            if (esRemoveTable(es)) {
+                strncpy(buffer,"Tabulka bola odstranena!", BUFFER_LENGTH);
+            } else {
+                strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
+            }
+            data_writeData(data, buffer);
             break;
         case '3':
             if(*(buffer + 1) == '0') {
+                strncpy(buffer,"1", BUFFER_LENGTH);
                 if (es->table == NULL) {
-                    strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
+                    strncat(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
                 } else {
                     *buffer = '3';
                     esGetColumnsType(es, buffer);
                 }
-                data_writeData(data, buffer);
             } else {
-                esAddEntry(es, buffer);
+                if (esAddEntry(es, buffer)) {
+                    strncpy(buffer,"Zaznam bol pridany do tabulky!", BUFFER_LENGTH);
+                } else {
+                    strncpy(buffer,"Zaznam nebol pridany do tabulky!", BUFFER_LENGTH);
+                }
             }
+            data_writeData(data, buffer);
             break;
         case '4':
             if (*(buffer + 1) == '1') {
                 int indexEntry = *(buffer + 2) - '0';
-                esRemoveEntry(es, indexEntry);
+                if (esRemoveEntry(es, indexEntry)) {
+                    strncpy(buffer,"Zaznam bol odstraneny z tabulky!", BUFFER_LENGTH);
+                } else {
+                    strncpy(buffer,"Zaznam nebol odstraneny  z tabulky!", BUFFER_LENGTH);
+                }
+                data_writeData(data, buffer);
                 break;
             }
         case '7':
             if (*(buffer + 1) == '1') {
-                esSortTable(es, *(buffer + 2) - '0', *(buffer + 3) - '0');
+                if(esSortTable(es, *(buffer + 2) - '0', *(buffer + 3) - '0')) {
+                    strncpy(buffer,"Tabulka bola utriedena!", BUFFER_LENGTH);
+                } else {
+                    strncpy(buffer,"Tabulka nebola utriedena!", BUFFER_LENGTH);
+                }
+                data_writeData(data, buffer);
                 break;
             }
         case '5':
-            *buffer = '5';
+            strncpy(buffer,"1", BUFFER_LENGTH);
             if (es->table == NULL) {
-                strncpy(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
+                strncat(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
                 data_writeData(data, buffer);
             } else if (es->table->countEntries == 0) {
-                strncpy(buffer,"Tabulka je prazdna!", BUFFER_LENGTH);
+                strncat(buffer,"Tabulka je prazdna!", BUFFER_LENGTH);
                 data_writeData(data, buffer);
             } else {
+                *buffer = '5';
                 esGetColumnsType(es, buffer);
                 data_writeData(data, buffer);
                 for (int i = 0; i < es->table->countEntries; i++) {
@@ -92,9 +118,17 @@ static void data_answer(void* data, char* buffer, EVIDENCE_SYSTEM* es) {
             break;
         case '6':
             strncpy(findString, buffer + 2, DATA_SIZE);
-            strncpy(buffer, "1", strlen(buffer));
-            esGetStringTableEntry(es, findString, buffer);
-            data_writeData(data, buffer);
+            strncpy(buffer, "1", BUFFER_LENGTH);
+            if (es->table == NULL) {
+                strncat(buffer,"Tabulka nie je vytvorena!", BUFFER_LENGTH);
+                data_writeData(data, buffer);
+            } else if (es->table->countEntries == 0) {
+                strncat(buffer,"Tabulka je prazdna!", BUFFER_LENGTH);
+                data_writeData(data, buffer);
+            } else {
+                esGetStringTableEntry(es, findString, buffer);
+                data_writeData(data, buffer);
+            }
             break;
         case '0':
             printf("Pouzivatel ukoncil komunikaciu.\n");

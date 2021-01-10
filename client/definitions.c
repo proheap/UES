@@ -42,8 +42,12 @@ static void data_answer(char* buffer) {
         case '5':
             printTableHead(buffer);
             break;
-        default:
+        case '0':
+        case '1':
             printTable(buffer, *buffer - '0');
+            break;
+        default:
+            printBuffer(buffer);
     }
 }
 

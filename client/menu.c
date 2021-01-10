@@ -35,6 +35,14 @@ static void printMenu() {
     printf("0. Exit\n");
 }
 
+void printBuffer(char* buffer) {
+    printf("----------------------------\n", buffer);
+    printf("%s\n", buffer);
+    printf("----------------------------\n", buffer);
+
+    reading = false;
+}
+
 static void menuColumnType(char* buffer, const int countColumns) {
     int type;
     for (int i = 0; i < countColumns; i++) {
@@ -56,6 +64,7 @@ static void menuCreateTable(char* buffer) {
 
     menuColumnType(buffer, countColumns);
     *(buffer + countColumns + 2) = '\0';
+    reading = true;
 }
 
 static void menuRemoveTable(char* buffer) {
@@ -70,6 +79,7 @@ static void menuRemoveTable(char* buffer) {
     if (input == 1) {
         *buffer = '2';
         *(buffer + 1) = '\0';
+        reading = true;
     }
 }
 
@@ -125,6 +135,7 @@ static void menuAddEntry(char* buffer) {
         strcat(buffer, entry);
         stateReading = BEFORE;
         stateMenu = START;
+        reading = true;
     }
 }
 
@@ -169,6 +180,7 @@ static void menuRemoveEntry(char* buffer) {
         *(buffer + 3) = '\0';
         stateReading = BEFORE;
         stateMenu = START;
+        reading = true;
     }
 }
 
@@ -241,6 +253,7 @@ static void menuSortTable(char* buffer) {
         *(buffer + 4) = '\0';
         stateReading = BEFORE;
         stateMenu = START;
+        reading = true;
     }
 }
 
