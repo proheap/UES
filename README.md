@@ -1,14 +1,16 @@
 # UES
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+[![Latest 1.0](https://img.shields.io/badge/latest-v1.0-red.svg?style=for-the-badge)]()  
 Universal evidence system in C
 
-----------------------------------------------------------------------------------------------------------------------------------
+----
 ### AUTHOR
 - Martin Mišík
 
 ### VERSION
 - 1.0
+---
 
-----------------------------------------------------------------------------------------------------------------------------------
 ### ASSIGNMENT
 One table stored on server, client works with table on local computer. Client can:
 - create / remove table
@@ -18,7 +20,7 @@ One table stored on server, client works with table on local computer. Client ca
 - print all table entries, which contains some string
 - sort table by some column
 
-----------------------------------------------------------------------------------------------------------------------------------
+---
 ### RUNNING APLICATION
 #### Server translation:
 	gcc server/server.c server/definitions.c server/evidence_system.c server/table.c server/column.c server/structures/linked_list.c server/structures/item.c -o server -pthread
@@ -29,5 +31,3 @@ One table stored on server, client works with table on local computer. Client ca
 	./server/server 10000 server
 #### Running client:
 	./client/client localhost 10000 client
-	
-----------------------------------------------------------------------------------------------------------------------------------
