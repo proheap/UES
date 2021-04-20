@@ -1,6 +1,6 @@
 # UES
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-[![Latest 1.0](https://img.shields.io/badge/latest-v1.0-red.svg?style=for-the-badge)]()  
+![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
+[![Latest 1.0](https://img.shields.io/badge/latest-v1.0-red.svg?style=flat-square)]()  
 Universal evidence system in C
 
 ----
