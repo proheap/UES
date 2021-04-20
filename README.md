@@ -1,6 +1,6 @@
 # UES
 ![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
-[![Latest 1.0](https://img.shields.io/badge/latest-v1.0-red.svg?style=flat-square)]()  
+[![Latest 1.0](https://img.shields.io/badge/latest-v1.0-red.svg?style=flat-square)](https://github.com/proheap/UES/)  
 Universal evidence system in C
 
 ----
@@ -8,7 +8,7 @@ Universal evidence system in C
 - Martin Mišík
 
 ### VERSION
-- 1.0
+- *1.0*
 ---
 
 ### ASSIGNMENT
